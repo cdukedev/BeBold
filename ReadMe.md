@@ -1,8 +1,8 @@
-#BeBold Extension
+# BeBold Extension
 
 BeBold is a browser extension designed to enhance reading comprehension for individuals with ADHD (Attention Deficit Hyperactivity Disorder). It achieves this by bolding the first half of each word on a webpage, providing a unique reading style that helps users to concentrate better on the text.
 
-###What I Learned
+### What I Learned
 
 Throughout the process of creating the BeBold extension, I learned the following:
 
@@ -12,7 +12,7 @@ Throughout the process of creating the BeBold extension, I learned the following
 - The process of traversing and manipulating the DOM (Document Object Model).
 - How to consider the unique cognitive needs of individuals with ADHD and develop a solution tailored to their requirements.
 
-###How to Fork and Use the Extension Locally
+### How to Fork and Use the Extension Locally
 
 If you would like to use the BeBold extension locally on your computer or contribute to the project, follow these steps:
 
