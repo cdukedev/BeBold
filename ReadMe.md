@@ -30,12 +30,12 @@ Replace <YOUR_GITHUB_USERNAME> with your actual GitHub username.
 
 3. Load the extension in your browser:
 
--Google Chrome:
+--Google Chrome:
 
-..*..*Compress the BeBold directory into a .zip file.
-..*..*Open Chrome and navigate to chrome://extensions/.
-..*..*Enable "Developer mode" by toggling the switch in the top-right corner.
-..*..*Click the "Load unpacked" button and select the BeBold directory from your local machine.
+- Compress the BeBold directory into a .zip file.
+- Open Chrome and navigate to chrome://extensions/.
+- Enable "Developer mode" by toggling the switch in the top-right corner.
+- Click the "Load unpacked" button and select the BeBold directory from your local machine.
 
 The BeBold extension should now be installed and ready for use in your browser. Test it out by visiting any webpage and observing the bolded text.
 
