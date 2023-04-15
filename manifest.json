@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "BeBold",
+  "version": "1.0",
+  "description": "An extension to bold the first half of each word on a webpage, designed to assist individuals with ADHD.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icon.png"
+    }
+  },
+  "icons": {
+    "48": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"]
+    }
+  ]
+}
