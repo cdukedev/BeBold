@@ -14,7 +14,43 @@ function processTextNode(node) {
 }
 
 function traverseDOM(node) {
-  if (node.nodeName.toLowerCase() === "svg") {
+  if (
+    node.nodeName.toLowerCase() === "svg" ||
+    node.nodeName.toLowerCase() === "script" ||
+    node.nodeName.toLowerCase() === "style" ||
+    node.nodeName.toLowerCase() === "noscript" ||
+    node.nodeName.toLowerCase() === "iframe" ||
+    node.nodeName.toLowerCase() === "canvas" ||
+    node.nodeName.toLowerCase() === "video" ||
+    node.nodeName.toLowerCase() === "audio" ||
+    node.nodeName.toLowerCase() === "img" ||
+    node.nodeName.toLowerCase() === "input" ||
+    node.nodeName.toLowerCase() === "textarea" ||
+    node.nodeName.toLowerCase() === "select" ||
+    node.nodeName.toLowerCase() === "button" ||
+    node.nodeName.toLowerCase() === "meter" ||
+    node.nodeName.toLowerCase() === "progress" ||
+    node.nodeName.toLowerCase() === "object" ||
+    node.nodeName.toLowerCase() === "embed" ||
+    node.nodeName.toLowerCase() === "applet" ||
+    node.nodeName.toLowerCase() === "frame" ||
+    node.nodeName.toLowerCase() === "frameset" ||
+    node.nodeName.toLowerCase() === "map" ||
+    node.nodeName.toLowerCase() === "param" ||
+    node.nodeName.toLowerCase() === "area" ||
+    node.nodeName.toLowerCase() === "link" ||
+    node.nodeName.toLowerCase() === "base" ||
+    node.nodeName.toLowerCase() === "meta" ||
+    node.nodeName.toLowerCase() === "head" ||
+    node.nodeName.toLowerCase() === "title" ||
+    node.nodeName.toLowerCase() === "basefont" ||
+    node.nodeName.toLowerCase() === "col" ||
+    node.nodeName.toLowerCase() === "colgroup" ||
+    node.nodeName.toLowerCase() === "frame" ||
+    node.nodeName.toLowerCase() === "frameset" ||
+    node.nodeName.toLowerCase() === "noframes" ||
+    node.nodeName.toLowerCase() === "param"
+  ) {
     return;
   }
 
