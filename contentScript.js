@@ -14,6 +14,10 @@ function processTextNode(node) {
 }
 
 function traverseDOM(node) {
+  if (node.nodeName.toLowerCase() === "svg") {
+    return;
+  }
+
   if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
     let newHTML = processTextNode(node);
     let tempElement = document.createElement("div");
