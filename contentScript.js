@@ -49,7 +49,8 @@ function traverseDOM(node) {
     node.nodeName.toLowerCase() === "frame" ||
     node.nodeName.toLowerCase() === "frameset" ||
     node.nodeName.toLowerCase() === "noframes" ||
-    node.nodeName.toLowerCase() === "param"
+    node.nodeName.toLowerCase() === "param" ||
+    node.nodeName.toLowerCase() === "a"
   ) {
     return;
   }
