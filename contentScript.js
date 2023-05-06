@@ -1,3 +1,5 @@
+let originalHTML = document.documentElement.innerHTML;
+
 function processTextNode(node) {
   let content = node.textContent;
   let words = content.split(/\s+/);
@@ -71,4 +73,23 @@ function traverseDOM(node) {
   }
 }
 
-traverseDOM(document.body);
+function applyChanges() {
+  traverseDOM(document.body);
+}
+
+function resetDOM() {
+  document.documentElement.innerHTML = originalHTML;
+}
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === "toggleExtension") {
+    if (request.isEnabled) {
+      applyChanges();
+    } else {
+      resetDOM();
+    }
+  }
+});
+
+// Apply changes by default when the page loads
+applyChanges();
