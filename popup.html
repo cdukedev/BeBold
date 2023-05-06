@@ -6,8 +6,21 @@
   <title>BeBold</title>
   <style>
     body {
-      width: 50px;
-      height: 30px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.42857143;
+      color: #333;
+      background-color: rgb(0, 30, 54);
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      width: 70px;
+      height: 50px;
       border-radius: 10px;
         background: linear-gradient(45deg, #f3f3f3, #b8fffa);
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
@@ -17,16 +30,26 @@
       font-size: 20px;
       /* wrap the text */
       word-wrap: break-word;
-      font-weight: 800;
-      color: #012220;
+      font-weight: 400;
+      color: #023330;
       text-align: center;
-      margin: 0;
+      margin: 1rem;
+    }
+    #toggleButton{
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      padding: .5rem 1.5rem;
+      border: #023330;
+      color: #023330;
+      font-size: 1rem;
+      background: linear-gradient(45deg, #f3f3f3, #b8fffa);
+      border-radius: 30px;
     }
   </style>
 </head>
 <body>
-  <h1>Be Bold</h1>
-  <button id="toggleButton">Turn Off</button>
+  <h1><strong>B</strong>e <strong>Bo</strong>ld</h1>
+  <button id="toggleButton"><strong>Tu</strong>rn <strong>Of</strong>f</button>
   <script src="popup.js"></script>
 </body>
 </html>
