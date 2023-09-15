@@ -20,10 +20,24 @@ function processTextNode(node) {
 
   return newHTML;
 }
+function isInsideList(node) {
+  let currentNode = node.parentNode;
+  while (currentNode) {
+    if (
+      currentNode.nodeName.toLowerCase() === "ul" ||
+      currentNode.nodeName.toLowerCase() === "ol"
+    ) {
+      return true;
+    }
+    currentNode = currentNode.parentNode;
+  }
+  return false;
+}
 
 function traverseDOM(node) {
   if (
     node.nodeName.toLowerCase() === "svg" ||
+    node.nodeName.toLowerCase() === "li" ||
     node.nodeName.toLowerCase() === "script" ||
     node.nodeName.toLowerCase() === "style" ||
     node.nodeName.toLowerCase() === "noscript" ||
@@ -57,11 +71,15 @@ function traverseDOM(node) {
     node.nodeName.toLowerCase() === "frame" ||
     node.nodeName.toLowerCase() === "frameset" ||
     node.nodeName.toLowerCase() === "noframes" ||
-    node.nodeName.toLowerCase() === "param" ||
-    node.nodeName.toLowerCase() === "a"
+    node.nodeName.toLowerCase() === "param"
   ) {
     return;
   }
+  if (isInsideList(node)) {
+    return;
+  }
+
+  // Handle text nodes
   if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
     let newContent = processTextNode(node);
     if (newContent && newContent !== "undefined") {
@@ -75,13 +93,17 @@ function traverseDOM(node) {
     return;
   }
 
+  // Recursively process children
   for (let i = 0; i < node.childNodes.length; i++) {
     traverseDOM(node.childNodes[i]);
   }
 }
 
 function applyChanges() {
-  traverseDOM(document.body);
+  //add a timeout to allow the DOM to update
+  setTimeout(() => {
+    traverseDOM(document.body);
+  }, 300);
 }
 
 function resetDOM() {
