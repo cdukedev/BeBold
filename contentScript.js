@@ -3,12 +3,18 @@ let originalHTML = document.documentElement.innerHTML;
 function processTextNode(node) {
   let content = node.textContent;
   let words = content.split(/\s+/);
+
+  //Only process if more than 50 words are in the text node
+  if (words.length < 15) {
+    return null;
+  }
+
   let newHTML = words
     .map((word) => {
-      let halfLength = Math.ceil(word.length / 2);
+      let halfLength = Math.floor(word.length / 2);
       let firstHalf = word.slice(0, halfLength);
       let secondHalf = word.slice(halfLength);
-      return `<strong style="color: inherit">${firstHalf}</strong>${secondHalf}`;
+      return `<strong id="custom-strong">${firstHalf}</strong><span id="custom-span">${secondHalf}</span>`;
     })
     .join(" ");
 
@@ -56,20 +62,21 @@ function traverseDOM(node) {
   ) {
     return;
   }
-
   if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
-    let newHTML = processTextNode(node);
-    let tempElement = document.createElement("div");
-    tempElement.innerHTML = newHTML;
-
-    Array.from(tempElement.childNodes).forEach((childNode) => {
-      node.parentNode.insertBefore(childNode, node);
-    });
-    node.parentNode.removeChild(node);
-  } else {
-    for (let child of Array.from(node.childNodes)) {
-      traverseDOM(child);
+    let newContent = processTextNode(node);
+    if (newContent && newContent !== "undefined") {
+      let tempElement = document.createElement("div");
+      tempElement.innerHTML = newContent;
+      Array.from(tempElement.childNodes).forEach((newChild) => {
+        node.parentNode.insertBefore(newChild, node);
+      });
+      node.parentNode.removeChild(node);
     }
+    return;
+  }
+
+  for (let i = 0; i < node.childNodes.length; i++) {
+    traverseDOM(node.childNodes[i]);
   }
 }
 
@@ -91,5 +98,23 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 });
 
-// Apply changes by default when the page loads
+// Create a MutationObserver to watch for changes in the DOM
+const observer = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    mutation.addedNodes.forEach((node) => {
+      if (node.nodeType === 1) {
+        // Check if it's an ELEMENT_NODE
+        traverseDOM(node);
+      }
+    });
+  });
+});
+
+// Start observing changes to the entire body of the document
+observer.observe(document.body, {
+  childList: true,
+  subtree: true,
+});
+
+// Initial pass to transform existing elements
 applyChanges();
