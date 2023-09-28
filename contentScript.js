@@ -1,7 +1,13 @@
 let originalHTML = document.documentElement.innerHTML;
 const currentURL = window.location.href;
+
 // Define the LinkedIn messaging URL prefix
 const linkedinMessagingURLPrefix = "https://www.linkedin.com/messaging/thread";
+
+// Set the initial state to enabled if it hasn’t been set already
+if (localStorage["extensionEnabled"] === undefined) {
+  localStorage["extensionEnabled"] = "true";
+}
 
 // Check if the current URL starts with the LinkedIn messaging URL prefix
 if (currentURL.startsWith(linkedinMessagingURLPrefix)) {
@@ -123,9 +129,11 @@ if (currentURL.startsWith(linkedinMessagingURLPrefix)) {
   chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === "toggleExtension") {
       if (request.isEnabled) {
+        localStorage["extensionEnabled"] = "true"; // Set the state to enabled
         applyChanges();
       } else {
-        resetDOM();
+        localStorage["extensionEnabled"] = "false"; // Set the state to disabled
+        location.reload();
       }
     }
   });
@@ -149,5 +157,7 @@ if (currentURL.startsWith(linkedinMessagingURLPrefix)) {
   });
 
   // Initial pass to transform existing elements
-  applyChanges();
+  if (localStorage["extensionEnabled"] === "true") {
+    applyChanges();
+  }
 }
