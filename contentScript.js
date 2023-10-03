@@ -47,7 +47,25 @@ if (currentURL.startsWith(linkedinMessagingURLPrefix)) {
     return false;
   }
 
+  function hasRoleTextbox(node) {
+    let currentNode = node;
+    while (currentNode) {
+      if (
+        currentNode.getAttribute &&
+        currentNode.getAttribute("role") === "textbox"
+      ) {
+        return true;
+      }
+      currentNode = currentNode.parentNode;
+    }
+    return false;
+  }
+
   function traverseDOM(node) {
+    // Check if node or its parent has role="textbox"
+    if (hasRoleTextbox(node)) {
+      return;
+    }
     if (
       node.nodeName.toLowerCase() === "svg" ||
       node.nodeName.toLowerCase() === "li" ||
