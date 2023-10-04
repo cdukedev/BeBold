@@ -18,7 +18,7 @@ if (currentURL.startsWith(linkedinMessagingURLPrefix)) {
     let words = content.split(/\s+/);
 
     //Only process if more than 50 words are in the text node
-    if (words.length < 15) {
+    if (words.length < 5) {
       return null;
     }
 
@@ -69,6 +69,7 @@ if (currentURL.startsWith(linkedinMessagingURLPrefix)) {
     if (
       node.nodeName.toLowerCase() === "svg" ||
       node.nodeName.toLowerCase() === "li" ||
+      node.nodeName.toLowerCase() === "h1" ||
       node.nodeName.toLowerCase() === "script" ||
       node.nodeName.toLowerCase() === "style" ||
       node.nodeName.toLowerCase() === "noscript" ||
