@@ -4,16 +4,11 @@ First of all, thank you for considering contributing to Bold! Your help and inpu
 
 ### Table of Contents
 
-- [Code of Conduct](#code-of-conduct)
 - [How Can I Contribute?](#how-can-i-contribute)
   - [Reporting Bugs](#reporting-bugs)
   - [Suggesting Enhancements](#suggesting-enhancements)
   - [Pull Requests](#pull-requests)
 - [Acknowledgements](#acknowledgements)
-
-### Code of Conduct
-
-By participating in this project, you agree to abide by the Code of Conduct. Please read the full document to understand the expectations for behavior when contributing.
 
 ### How Can I Contribute?
 
@@ -55,3 +50,6 @@ Please include a clear and detailed description of the changes in your pull requ
 ## Acknowledgements
 
 Thank you for contributing to BeBold! Your time and expertise help make this project better for everyone. If you have any questions or need assistance, please feel free to reach out to the project maintainers.
+
+
+
