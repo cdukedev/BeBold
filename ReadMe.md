@@ -23,10 +23,8 @@ If you would like to use the BeBold extension locally on your computer or contri
 Copy code
 
 ```bash
-git clone https://github.com/<YOUR_GITHUB_USERNAME>/BeBold.git
+git clone https://github.com/cdukedev/BeBold.git
 ```
-
-Replace <YOUR_GITHUB_USERNAME> with your actual GitHub username.
 
 3. Load the extension in your browser:
 
