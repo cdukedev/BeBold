@@ -5,15 +5,15 @@ if (localStorage["extensionEnabled"] === undefined) {
   localStorage["extensionEnabled"] = "true";
 }
 
-// ignoredSites is a mapping of site names to their URLs. If the current URL starts with
-// any of the ignored sites, then the extension is disabled.
+// disabledSites is a mapping of site names to their URLs. If the current URL starts with
+// any of the values, then the extension is disabled.
 const disabledSites = [
    "https://www.linkedin.com/messaging/thread",
 ]
 const isDisabledSite = disabledSites.some((site) => window.location.href.startsWith(site))
 
 if (isDisabledSite) {
-  console.log(`Extension is disabled on ${isIgnoredSite}`);
+  console.log(`Extension is disabled on ${isDisabledSite}`);
 } else {
   function processTextNode(node) {
     let content = node.textContent;
