@@ -1,17 +1,19 @@
 let originalHTML = document.documentElement.innerHTML;
-const currentURL = window.location.href;
-
-// Define the LinkedIn messaging URL prefix
-const linkedinMessagingURLPrefix = "https://www.linkedin.com/messaging/thread";
 
 // Set the initial state to enabled if it hasn’t been set already
 if (localStorage["extensionEnabled"] === undefined) {
   localStorage["extensionEnabled"] = "true";
 }
 
-// Check if the current URL starts with the LinkedIn messaging URL prefix
-if (currentURL.startsWith(linkedinMessagingURLPrefix)) {
-  console.log("Extension is disabled on LinkedIn Messaging.");
+// disabledSites is a mapping of site names to their URLs. If the current URL starts with
+// any of the values, then the extension is disabled.
+const disabledSites = [
+   "https://www.linkedin.com/messaging/thread",
+]
+const isDisabledSite = disabledSites.some((site) => window.location.href.startsWith(site))
+
+if (isDisabledSite) {
+  console.log(`Extension is disabled on ${isDisabledSite}`);
 } else {
   function processTextNode(node) {
     let content = node.textContent;
