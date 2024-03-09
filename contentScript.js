@@ -1,19 +1,19 @@
 let originalHTML = document.documentElement.innerHTML;
-const currentURL = window.location.href;
-
-// ignoredSites is a list of prefix URL's that the extension should be disabled on.
-const ignoredSites = [
-  "https://www.linkedin.com/messaging/thread",
-]
 
 // Set the initial state to enabled if it hasn’t been set already
 if (localStorage["extensionEnabled"] === undefined) {
   localStorage["extensionEnabled"] = "true";
 }
 
-// If the current URL starts with any of the ignored sites, then the extension is disabled.
-if (ignoredSites.every((v) => !currentURL.startsWith(v))) {
-  console.log("Extension is disabled on LinkedIn Messaging.");
+// ignoredSites is a mapping of site names to their URLs. If the current URL starts with
+// any of the ignored sites, then the extension is disabled.
+const ignoredSites = [
+   "https://www.linkedin.com/messaging/thread",
+]
+const isIgnoredSite = ignoredSites.some((site) => window.location.href.startsWith(site))
+
+if (isIgnoredSite) {
+  console.log(`Extension is disabled on ${isIgnoredSite}`);
 } else {
   function processTextNode(node) {
     let content = node.textContent;
