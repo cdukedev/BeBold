@@ -1,0 +1,7 @@
+node_modules
+.DS_Store
+
+# Spike evidence is committed on purpose: the wayfinder tickets cite these paths.
+# The 2x full-page renders are omitted as large duplicates of the 1x versions.
+spike/out/fullpage-chrome-dsf2.png
+spike/out/legibility-all-chrome-dsf2.png

@@ -1,0 +1,16 @@
+{
+  "name": "bebold-spike",
+  "private": true,
+  "type": "module",
+  "description": "Go/no-go spike: can the CSS Custom Highlight API render a bionic-reading effect without mutating the DOM?",
+  "scripts": {
+    "spike": "node run-spike.mjs",
+    "iframe": "node iframe-check.mjs",
+    "font": "node font-check.mjs"
+  },
+  "devDependencies": {
+    "pixelmatch": "^7.1.0",
+    "playwright": "^1.57.0",
+    "pngjs": "^7.0.0"
+  }
+}

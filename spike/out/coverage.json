@@ -1,0 +1,474 @@
+{
+  "agg": {
+    "sitesAttempted": 24,
+    "sitesOk": 23,
+    "sitesErrored": 1,
+    "transformedTokens": 33782,
+    "untransformedTokens": 30328,
+    "totalLightTokens": 64110,
+    "shadowTokens": 3508,
+    "iframeTokens": 0,
+    "overallCoveragePct": 52.69,
+    "coverageIncludingUnreachablePct": 49.96,
+    "sitesWithZeroCoverage": [
+      "youtube-home",
+      "chromestatus"
+    ],
+    "skipReasons": {
+      "tag-skiplist": 25778,
+      "short-node": 4524,
+      "other-not-reached": 26
+    },
+    "tagSkiplistDetail": {
+      "tag-skiplist:li": 25511,
+      "tag-skiplist:button": 196,
+      "tag-skiplist:h1": 71
+    }
+  },
+  "rows": [
+    {
+      "name": "wikipedia-article",
+      "url": "https://en.wikipedia.org/wiki/Attention_deficit_hyperactivity_disorder",
+      "transformedTokens": 22678,
+      "untransformedTokens": 21035,
+      "shadowTokens": 0,
+      "iframeTokens": 0,
+      "reasons": {
+        "short-node": 1784,
+        "tag-skiplist:button": 34,
+        "tag-skiplist:li": 19213,
+        "tag-skiplist:h1": 4
+      },
+      "customStrongCount": 12153,
+      "shadowRoots": 0,
+      "sameOriginFrames": 0,
+      "totalLightTokens": 43713,
+      "coveragePct": 51.9,
+      "title": "Attention deficit hyperactivity disorder - Wikipedia"
+    },
+    {
+      "name": "mdn-docs",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/::highlight",
+      "transformedTokens": 197,
+      "untransformedTokens": 327,
+      "shadowTokens": 1510,
+      "iframeTokens": 0,
+      "reasons": {
+        "tag-skiplist:li": 245,
+        "tag-skiplist:button": 9,
+        "short-node": 69,
+        "tag-skiplist:h1": 4
+      },
+      "customStrongCount": 152,
+      "shadowRoots": 28,
+      "sameOriginFrames": 0,
+      "totalLightTokens": 524,
+      "coveragePct": 37.6,
+      "title": "::highlight() CSS pseudo-element - CSS | MDN"
+    },
+    {
+      "name": "hackernews-front",
+      "url": "https://news.ycombinator.com/",
+      "transformedTokens": 504,
+      "untransformedTokens": 424,
+      "shadowTokens": 0,
+      "iframeTokens": 0,
+      "reasons": {
+        "short-node": 424
+      },
+      "customStrongCount": 257,
+      "shadowRoots": 0,
+      "sameOriginFrames": 0,
+      "totalLightTokens": 928,
+      "coveragePct": 54.3,
+      "title": "Hacker News"
+    },
+    {
+      "name": "hackernews-item",
+      "url": "https://news.ycombinator.com/item?id=1",
+      "transformedTokens": 40,
+      "untransformedTokens": 60,
+      "shadowTokens": 0,
+      "iframeTokens": 0,
+      "reasons": {
+        "short-node": 60
+      },
+      "customStrongCount": 20,
+      "shadowRoots": 0,
+      "sameOriginFrames": 0,
+      "totalLightTokens": 100,
+      "coveragePct": 40,
+      "title": "Y Combinator | Hacker News"
+    },
+    {
+      "name": "github-repo",
+      "url": "https://github.com/cdukedev/BeBold",
+      "transformedTokens": 396,
+      "untransformedTokens": 579,
+      "shadowTokens": 1008,
+      "iframeTokens": 0,
+      "reasons": {
+        "short-node": 132,
+        "tag-skiplist:button": 17,
+        "tag-skiplist:li": 428,
+        "tag-skiplist:h1": 2
+      },
+      "customStrongCount": 256,
+      "shadowRoots": 13,
+      "sameOriginFrames": 0,
+      "totalLightTokens": 975,
+      "coveragePct": 40.6,
+      "title": "GitHub - cdukedev/BeBold · GitHub"
+    },
+    {
+      "name": "github-issue",
+      "url": "https://github.com/cdukedev/BeBold/issues/2",
+      "transformedTokens": 511,
+      "untransformedTokens": 150,
+      "shadowTokens": 984,
+      "iframeTokens": 0,
+      "reasons": {
+        "short-node": 93,
+        "tag-skiplist:button": 20,
+        "tag-skiplist:li": 28,
+        "tag-skiplist:h1": 9
+      },
+      "customStrongCount": 320,
+      "shadowRoots": 5,
+      "sameOriginFrames": 0,
+      "totalLightTokens": 661,
+      "coveragePct": 77.3,
+      "title": "BeBold Extension Causes Word Splitting on Specific Webpage · Issue #2 · cdukedev/BeBold"
+    },
+    {
+      "name": "bbc-news",
+      "url": "https://www.bbc.com/news",
+      "transformedTokens": 2183,
+      "untransformedTokens": 244,
+      "shadowTokens": 0,
+      "iframeTokens": 0,
+      "reasons": {
+        "short-node": 153,
+        "tag-skiplist:button": 7,
+        "tag-skiplist:li": 84
+      },
+      "customStrongCount": 1153,
+      "shadowRoots": 0,
+      "sameOriginFrames": 2,
+      "totalLightTokens": 2427,
+      "coveragePct": 89.9,
+      "title": "BBC News - Breaking news, video and the latest top stories from the U.S. and around the world"
+    },
+    {
+      "name": "guardian",
+      "url": "https://www.theguardian.com/international",
+      "transformedTokens": 133,
+      "untransformedTokens": 3022,
+      "shadowTokens": 0,
+      "iframeTokens": 0,
+      "reasons": {
+        "short-node": 104,
+        "tag-skiplist:li": 2917,
+        "tag-skiplist:button": 1
+      },
+      "customStrongCount": 72,
+      "shadowRoots": 0,
+      "sameOriginFrames": 5,
+      "totalLightTokens": 3155,
+      "coveragePct": 4.2,
+      "title": "Latest news, sport and opinion from the Guardian"
+    },
+    {
+      "name": "npm-package",
+      "url": "https://www.npmjs.com/package/playwright",
+      "transformedTokens": 54,
+      "untransformedTokens": 11,
+      "shadowTokens": 0,
+      "iframeTokens": 0,
+      "reasons": {
+        "tag-skiplist:h1": 3,
+        "short-node": 8
+      },
+      "customStrongCount": 36,
+      "shadowRoots": 0,
+      "sameOriginFrames": 0,
+      "totalLightTokens": 65,
+      "coveragePct": 83.1,
+      "title": "Just a moment..."
+    },
+    {
+      "name": "nodejs-docs",
+      "url": "https://nodejs.org/en/about",
+      "transformedTokens": 1103,
+      "untransformedTokens": 245,
+      "shadowTokens": 0,
+      "iframeTokens": 0,
+      "reasons": {
+        "short-node": 134,
+        "tag-skiplist:button": 30,
+        "tag-skiplist:li": 78,
+        "tag-skiplist:h1": 3
+      },
+      "customStrongCount": 573,
+      "shadowRoots": 1,
+      "sameOriginFrames": 0,
+      "totalLightTokens": 1348,
+      "coveragePct": 81.8,
+      "title": "Node.js — About Node.js®"
+    },
+    {
+      "name": "python-docs",
+      "url": "https://docs.python.org/3/tutorial/introduction.html",
+      "transformedTokens": 3428,
+      "untransformedTokens": 1122,
+      "shadowTokens": 0,
+      "iframeTokens": 0,
+      "reasons": {
+        "tag-skiplist:li": 439,
+        "tag-skiplist:h1": 6,
+        "short-node": 677
+      },
+      "customStrongCount": 1952,
+      "shadowRoots": 0,
+      "sameOriginFrames": 0,
+      "totalLightTokens": 4550,
+      "coveragePct": 75.3,
+      "title": "3. An Informal Introduction to Python — Python 3.14.7 documentation"
+    },
+    {
+      "name": "stackoverflow",
+      "url": "https://stackoverflow.com/questions/11227809/why-is-processing-a-sorted-array-faster-than-processing-an-unsorted-array",
+      "error": "page.evaluate: Execution context was destroyed, most likely because of a navigation"
+    },
+    {
+      "name": "arxiv-abs",
+      "url": "https://arxiv.org/abs/1706.03762",
+      "transformedTokens": 540,
+      "untransformedTokens": 211,
+      "shadowTokens": 0,
+      "iframeTokens": 0,
+      "reasons": {
+        "short-node": 178,
+        "tag-skiplist:h1": 14,
+        "tag-skiplist:button": 7,
+        "tag-skiplist:li": 12
+      },
+      "customStrongCount": 392,
+      "shadowRoots": 0,
+      "sameOriginFrames": 0,
+      "totalLightTokens": 751,
+      "coveragePct": 71.9,
+      "title": "[1706.03762] Attention Is All You Need"
+    },
+    {
+      "name": "web-dev",
+      "url": "https://web.dev/articles/css-custom-highlight-api",
+      "transformedTokens": 28,
+      "untransformedTokens": 85,
+      "shadowTokens": 6,
+      "iframeTokens": 0,
+      "reasons": {
+        "tag-skiplist:button": 1,
+        "short-node": 8,
+        "tag-skiplist:li": 76
+      },
+      "customStrongCount": 20,
+      "shadowRoots": 1,
+      "sameOriginFrames": 0,
+      "totalLightTokens": 113,
+      "coveragePct": 24.8,
+      "title": "404  |  Page Not Found  |  web.dev"
+    },
+    {
+      "name": "tailwind-docs",
+      "url": "https://tailwindcss.com/docs/flex-direction",
+      "transformedTokens": 175,
+      "untransformedTokens": 626,
+      "shadowTokens": 0,
+      "iframeTokens": 0,
+      "reasons": {
+        "tag-skiplist:button": 3,
+        "short-node": 198,
+        "tag-skiplist:li": 423,
+        "tag-skiplist:h1": 2
+      },
+      "customStrongCount": 98,
+      "shadowRoots": 1,
+      "sameOriginFrames": 0,
+      "totalLightTokens": 801,
+      "coveragePct": 21.8,
+      "title": "flex-direction - Flexbox & Grid - Tailwind CSS"
+    },
+    {
+      "name": "playstation-store",
+      "url": "https://store.playstation.com/en-us/product/UP3542-CUSA10675_00-0000000000000000",
+      "transformedTokens": 536,
+      "untransformedTokens": 175,
+      "shadowTokens": 0,
+      "iframeTokens": 0,
+      "reasons": {
+        "tag-skiplist:button": 22,
+        "short-node": 66,
+        "tag-skiplist:li": 86,
+        "tag-skiplist:h1": 1
+      },
+      "customStrongCount": 599,
+      "shadowRoots": 0,
+      "sameOriginFrames": 1,
+      "totalLightTokens": 711,
+      "coveragePct": 75.4,
+      "title": "QuiVr"
+    },
+    {
+      "name": "youtube-home",
+      "url": "https://www.youtube.com/",
+      "transformedTokens": 0,
+      "untransformedTokens": 81,
+      "shadowTokens": 0,
+      "iframeTokens": 0,
+      "reasons": {
+        "tag-skiplist:button": 2,
+        "short-node": 53,
+        "other-not-reached": 26
+      },
+      "customStrongCount": 0,
+      "shadowRoots": 0,
+      "sameOriginFrames": 1,
+      "totalLightTokens": 81,
+      "coveragePct": 0,
+      "title": "YouTube"
+    },
+    {
+      "name": "apple",
+      "url": "https://www.apple.com/",
+      "transformedTokens": 194,
+      "untransformedTokens": 1008,
+      "shadowTokens": 0,
+      "iframeTokens": 0,
+      "reasons": {
+        "tag-skiplist:h1": 1,
+        "tag-skiplist:li": 903,
+        "short-node": 104
+      },
+      "customStrongCount": 107,
+      "shadowRoots": 0,
+      "sameOriginFrames": 0,
+      "totalLightTokens": 1202,
+      "coveragePct": 16.1,
+      "title": "Apple"
+    },
+    {
+      "name": "wikipedia-mobile",
+      "url": "https://en.m.wikipedia.org/wiki/Bionic_reading",
+      "transformedTokens": 66,
+      "untransformedTokens": 180,
+      "shadowTokens": 0,
+      "iframeTokens": 0,
+      "reasons": {
+        "short-node": 25,
+        "tag-skiplist:button": 2,
+        "tag-skiplist:li": 151,
+        "tag-skiplist:h1": 2
+      },
+      "customStrongCount": 76,
+      "shadowRoots": 0,
+      "sameOriginFrames": 0,
+      "totalLightTokens": 246,
+      "coveragePct": 26.8,
+      "title": "Bionic reading - Wikipedia"
+    },
+    {
+      "name": "csstricks",
+      "url": "https://css-tricks.com/almanac/selectors/h/highlight/",
+      "transformedTokens": 90,
+      "untransformedTokens": 101,
+      "shadowTokens": 0,
+      "iframeTokens": 0,
+      "reasons": {
+        "short-node": 14,
+        "tag-skiplist:li": 74,
+        "tag-skiplist:h1": 12,
+        "tag-skiplist:button": 1
+      },
+      "customStrongCount": 58,
+      "shadowRoots": 0,
+      "sameOriginFrames": 1,
+      "totalLightTokens": 191,
+      "coveragePct": 47.1,
+      "title": "Page Not Found (404 )- CSS-Tricks"
+    },
+    {
+      "name": "chromestatus",
+      "url": "https://chromestatus.com/feature/5436441440026624",
+      "transformedTokens": 0,
+      "untransformedTokens": 0,
+      "shadowTokens": 0,
+      "iframeTokens": 0,
+      "reasons": {},
+      "customStrongCount": 0,
+      "shadowRoots": 2,
+      "sameOriginFrames": 0,
+      "totalLightTokens": 0,
+      "coveragePct": 0,
+      "title": "Custom Highlight API - Chrome Platform Status"
+    },
+    {
+      "name": "gov-uk",
+      "url": "https://www.gov.uk/browse/benefits",
+      "transformedTokens": 126,
+      "untransformedTokens": 372,
+      "shadowTokens": 0,
+      "iframeTokens": 0,
+      "reasons": {
+        "short-node": 32,
+        "tag-skiplist:button": 27,
+        "tag-skiplist:li": 312,
+        "tag-skiplist:h1": 1
+      },
+      "customStrongCount": 170,
+      "shadowRoots": 0,
+      "sameOriginFrames": 0,
+      "totalLightTokens": 498,
+      "coveragePct": 25.3,
+      "title": "Benefits - GOV.UK"
+    },
+    {
+      "name": "substack",
+      "url": "https://astralcodexten.substack.com/",
+      "transformedTokens": 157,
+      "untransformedTokens": 114,
+      "shadowTokens": 0,
+      "iframeTokens": 0,
+      "reasons": {
+        "tag-skiplist:button": 10,
+        "short-node": 104
+      },
+      "customStrongCount": 78,
+      "shadowRoots": 0,
+      "sameOriginFrames": 0,
+      "totalLightTokens": 271,
+      "coveragePct": 57.9,
+      "title": "Astral Codex Ten | Scott Alexander | Substack"
+    },
+    {
+      "name": "mozilla-blog",
+      "url": "https://blog.mozilla.org/en/",
+      "transformedTokens": 643,
+      "untransformedTokens": 156,
+      "shadowTokens": 0,
+      "iframeTokens": 0,
+      "reasons": {
+        "short-node": 104,
+        "tag-skiplist:li": 42,
+        "tag-skiplist:h1": 7,
+        "tag-skiplist:button": 3
+      },
+      "customStrongCount": 388,
+      "shadowRoots": 0,
+      "sameOriginFrames": 1,
+      "totalLightTokens": 799,
+      "coveragePct": 80.5,
+      "title": "The Mozilla Blog"
+    }
+  ]
+}
