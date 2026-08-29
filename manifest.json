@@ -1,19 +1,31 @@
 {
   "manifest_version": 3,
   "name": "BeBold",
-  "version": "1.4",
-  "description": "BeBold extension alters text on webpages bolding first half of every word.Which may benefit those who find it challenging to focus.",
+  "version": "2.0",
+  "minimum_chrome_version": "105",
+  "description": "Bolds the start of each word to give your eye an anchor. Does not change page layout or what screen readers read.",
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_title": "BeBold"
   },
-  "icons": {
-    "48": "icon.png"
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
   },
+  "icons": { "48": "icon.png" },
+  "permissions": ["storage"],
+  "background": { "service_worker": "background.js" },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["contentScript.js"],
-      "css": ["content.css"]
+      "all_frames": true,
+      "js": ["engine.js", "contentScript.js"]
     }
-  ]
+  ],
+  "commands": {
+    "toggle-site": {
+      "suggested_key": { "default": "Alt+Shift+B" },
+      "description": "Turn BeBold on or off for this site"
+    }
+  }
 }

@@ -5,3 +5,6 @@ node_modules
 # The 2x full-page renders are omitted as large duplicates of the 1x versions.
 spike/out/fullpage-chrome-dsf2.png
 spike/out/legibility-all-chrome-dsf2.png
+
+# QA before/after catalog: regenerate with `npm run qa:shots`. Too large for git.
+qa/out/shots/

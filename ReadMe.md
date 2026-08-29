@@ -1,71 +1,86 @@
-# BeBold Extension
-BeBold is a browser extension designed to enhance reading comprehension for individuals with ADHD (Attention Deficit Hyperactivity Disorder). It achieves this by bolding the first half of each word on a webpage, providing a unique reading style that helps users to concentrate better on the text.
+# BeBold
 
-## What I Learned
-Throughout the process of creating the BeBold extension, I learned the following:
+A Chrome extension that bolds the start of each word to give your eye an anchor.
 
-- How to create a browser extension from scratch.
-- The importance of manifest files in defining the extension's structure and behavior.
-- How to create and apply content scripts to modify web content.
-- The process of traversing and manipulating the DOM (Document Object Model).
-- How to consider the unique cognitive needs of individuals with ADHD and develop a solution tailored to their requirements.
+Some people find it easier to hold their place while reading. The published research has
+not found a reading-speed benefit, so treat it as a preference rather than a technique,
+and keep it only if it helps you.
 
-## How to Fork and Use the Extension Locally
-If you would like to use the BeBold extension locally on your computer or contribute to the project, follow these steps:
+## What version 2.0 changed
 
-1. Fork the repository: Click the "Fork" button at the top-right corner of the original repository to create a copy of the project under your own GitHub account.
-2. Clone the forked repository: Clone the repository to your local machine by running the following command in your terminal or command prompt:
+1.4 rewrote the page: it replaced every text node with a sequence of `<strong>` and
+`<span>` elements. That is why it broke layouts, destroyed whitespace, and did nothing at
+all on most modern sites.
 
-    ```bash
-    git clone https://github.com/{YourUserName}/BeBold.git
-    ```
+2.0 does not touch the DOM. It paints the effect with the
+[CSS Custom Highlight API](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Custom_Highlight_API),
+registering ranges against `CSS.highlights` and styling them with a `::highlight()` rule.
+Measured consequences, across 37 real sites:
 
-### Load the extension in your browser:
-- **Google Chrome:**
-  1. Compress the BeBold directory into a .zip file.
-  2. Open Chrome and navigate to `chrome://extensions/`.
-  3. Enable "Developer mode" by toggling the switch in the top-right corner.
-  4. Click the "Load unpacked" button and select the BeBold directory from your local machine.
-  5. The BeBold extension should now be installed and ready for use in your browser. Test it out by visiting any webpage and observing the bolded text.
+- **Zero layout movement.** Worst bounding-box shift on any element on any site: 0.00 px.
+- **The accessibility tree is byte-identical** to the untreated page on all 37.
+- Copy and paste, find-in-page, and text selection are unaffected, because no text node
+  is ever split.
+- Coverage went from 52.7% to **97.9%** on sites whose script we treat. YouTube went from
+  0% to 100%; chromestatus.com, which is entirely nested shadow DOM, from 0% to 88.8%.
 
-Feel free to make any improvements to the extension or submit pull requests with your changes. Your contributions are greatly appreciated!
+Full numbers in [`qa/RESULTS.md`](qa/RESULTS.md). The architecture spike that settled the
+approach is in [`spike/RESULTS.md`](spike/RESULTS.md).
 
-## Contributing to the Project
-If you wish to contribute to the project, please follow these steps to ensure a smooth workflow:
+## Running it locally
 
-1. **Create a New Branch:**
-   - Switch to your local copy of the repository.
-   - Create a new branch for your feature or fix using:
-     ```bash
-     git checkout -b feature-branch-name
-     ```
-2. **Make Your Changes:**
-   - Work on your local branch and make the changes you deem necessary.
-   - Test the application thoroughly to ensure your changes work as expected without breaking other functionalities.
+```bash
+git clone https://github.com/cdukedev/BeBold.git
+cd BeBold
+```
 
-3. **Merge the Main Branch into Your Branch:**
-   - Before submitting a pull request, merge the main branch with your branch to ensure that your changes are compatible with the main project. This can be done by:
-     ```bash
-     git checkout main
-     git pull origin main
-     git checkout feature-branch-name
-     git merge main
-     ```
-   - Resolve any merge conflicts and test again to make sure everything works correctly.
+Then in Chrome:
 
-4. **Push Your Changes:**
-   - Once you are satisfied with your changes and have tested everything, push your branch to GitHub:
-     ```bash
-     git push origin feature-branch-name
-     ```
+1. Open `chrome://extensions`.
+2. Turn on **Developer mode** (top right).
+3. Click **Load unpacked** and select the repository directory.
 
-5. **Create a Pull Request:**
-   - Go to the original repository on GitHub.
-   - Click on the 'Pull Requests' tab and then the 'New pull request' button.
-   - Select your feature branch and compare it with the main branch of the original repository.
-   - Fill in the pull request template with all the relevant information about your changes.
-   - Submit your pull request.
+Do not zip it first. Do not try to automate this with `--load-extension`: Chrome 137
+removed that switch, and a browser launched with it silently loads no extension at all
+while reporting success.
 
-Please ensure your code is well-documented and adheres to the project's code style and conventions. All contributions are subject to review and approval by the project maintainers.
+Requires Chrome 105 or later, which is where the CSS Custom Highlight API landed.
 
+## Development
 
+```bash
+npm install          # Playwright and the image-diff tooling
+
+npm run qa           # invariance and coverage across 38 real sites
+npm run qa:shots     # the same, writing a before/after catalog to qa/out/shots
+node qa/integration.mjs   # the chrome.* wiring: storage, migration, teardown
+npm run spike        # re-measure which CSS properties ::highlight() honours
+npm run coverage:1.4 # measure what the old renderer covered, for comparison
+```
+
+The QA harness runs the real `engine.js` inside Chrome and asserts **invariance** rather
+than pixel equality, because the pixels are supposed to change. It measures each page
+three times per load, using an idle interval as a noise floor, so that a lazy-loading
+image is never mistaken for an extension bug. It also refuses to report a number at all
+unless a positive control transforms first, which is not paranoia: an earlier version of
+this harness confidently reported 0% coverage across 23 sites because Chrome had silently
+loaded no extension.
+
+## Files
+
+| file | role |
+|---|---|
+| `engine.js` | the renderer. Segmentation, refusal policy, highlight registration, observer, teardown. Deliberately free of every `chrome.*` API so it can be tested directly. |
+| `contentScript.js` | wiring only: reads preferences, decides whether this origin is enabled, drives the engine. |
+| `background.js` | keyboard command handling. |
+| `popup.html` / `popup.js` | the toolbar popup. Reads real state before rendering. |
+| `options.html` / `options.js` | settings, with a live preview rendered by the real engine. |
+
+## Privacy
+
+BeBold makes no network requests of any kind. It collects nothing, sends nothing, and
+stores only your preferences in Chrome's own sync storage.
+
+## Contributing
+
+See [contribution.md](contribution.md).
