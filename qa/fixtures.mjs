@@ -39,6 +39,11 @@ const EXPECT = {
                    '#url': ['https://example.com/docs/page', 'support@example.com'],
                    '#money': ['$24.99', '1,250.00'], '#numbers': ['1,250,000', '98765'],
                    '#hex': ['#1a2b3c'], '#inlinecode': ['npm install playwright'] },
+    /* Positive control for the overlap assertion itself. The previous version of that
+       check only compared prefixes and passed vacuously, missing a range that landed in
+       the middle of "v2.14.0-rc.1". If this needle ever stops reporting an overlap, the
+       check has gone blind again and every "left intact" result above is worthless. */
+    mustOverlap: { '#prose': ['paragraph'] },
   },
   'editable.html': { treated: ['#prose'], untreated: ['#ce', '#tb', '#ta', '#btn', '#sel'] },
   'shadow.html': { treated: ['#light'], shadowTreated: true },
@@ -97,6 +102,27 @@ const PROBE = (sels) => {
     const c = r.startContainer;
     if (c.nodeType === 3) texts.push(c.data.slice(r.startOffset, r.endOffset));
   }
+
+  /* For each needle, locate its exact character span and report any range that overlaps
+     it anywhere, not just at its start. */
+  window.__overlaps = (sel, needle) => {
+    const el = document.querySelector(sel);
+    if (!el) return 'no-element';
+    const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    let n;
+    while ((n = w.nextNode())) {
+      const at = n.data.indexOf(needle);
+      if (at < 0) continue;
+      const lo = at, hi = at + needle.length;
+      for (const r of ranges) {
+        if (r.startContainer === n && r.startOffset < hi && r.endOffset > lo) {
+          return n.data.slice(r.startOffset, r.endOffset);
+        }
+      }
+      return null;
+    }
+    return 'needle-not-found';
+  };
   let shadowRanges = 0;
   for (const r of ranges) {
     const c = r.startContainer;
@@ -146,12 +172,16 @@ for (const file of files) {
   }
   for (const [sel, needles] of Object.entries(expect.noRangeOver || {})) {
     for (const needle of needles) {
-      const hit = got.texts.some((t) => t.length > 1 && needle.includes(t) &&
-        needle.indexOf(t) === 0 && needle !== t);
-      const covered = got.texts.some((t) => needle.startsWith(t) && t.length >= 2);
-      check(`${file}: "${needle}" is left intact`, !covered,
-        covered ? `prefix range found in ${sel}` : '');
-      void hit;
+      const hit = await a.evaluate(([s2, n2]) => window.__overlaps(s2, n2), [sel, needle]);
+      check(`${file}: "${needle}" is left intact`, hit === null,
+        hit === null ? '' : `range "${hit}" overlaps it in ${sel}`);
+    }
+  }
+  for (const [sel, needles] of Object.entries(expect.mustOverlap || {})) {
+    for (const needle of needles) {
+      const hit = await a.evaluate(([s2, n2]) => window.__overlaps(s2, n2), [sel, needle]);
+      check(`${file}: overlap check is not blind ("${needle}" IS treated)`,
+        typeof hit === 'string' && hit.length > 0, `got ${JSON.stringify(hit)}`);
     }
   }
   if (expect.noSplitGrapheme) {

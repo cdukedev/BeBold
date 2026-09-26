@@ -40,46 +40,52 @@
 
   // --------------------------------------------------------------- policy ----
 
-  // Elements whose text is never treated. Two groups, for two different reasons.
-  const NON_TEXT = new Set(['script', 'style', 'noscript', 'template', 'svg', 'math',
-    'canvas', 'video', 'audio', 'img', 'picture', 'source', 'track', 'object', 'embed',
-    'iframe', 'frame', 'frameset', 'noframes', 'applet', 'map', 'area', 'param',
-    'link', 'base', 'meta', 'head', 'title', 'col', 'colgroup']);
+  /* The refusal policy is data, not code. policy.js is generated from policy.v1.json
+     so that someone who reads a writing system better than they read JavaScript can
+     change a verdict and open a pull request. It is loaded first by the manifest.
 
-  // Interactive control labels are UI affordances, not prose. Editable regions are
-  // excluded because highlighting collides with the editor's own selection rendering.
-  const CONTROLS = new Set(['input', 'textarea', 'select', 'option', 'optgroup',
-    'button', 'meter', 'progress']);
+     The inline fallback below exists because engine.js must stay runnable on its own:
+     the live-site QA harness injects this one file into pages, where nothing else of
+     ours is present. CI asserts the two agree. */
+  const P = window.BeBoldPolicy || null;
 
-  // Character-level accuracy beats reading speed in all of these.
-  const CODEISH = new Set(['code', 'pre', 'kbd', 'samp', 'var', 'tt']);
+  const NON_TEXT = P ? P.nonText : new Set(['script', 'style', 'noscript', 'template',
+    'svg', 'math', 'canvas', 'video', 'audio', 'img', 'picture', 'source', 'track',
+    'object', 'embed', 'iframe', 'frame', 'frameset', 'noframes', 'applet', 'map',
+    'area', 'param', 'link', 'base', 'meta', 'head', 'title', 'col', 'colgroup']);
 
-  const SCRIPT_FAMILIES = [
+  const CONTROLS = P ? P.controls : new Set(['input', 'textarea', 'select', 'option',
+    'optgroup', 'button', 'meter', 'progress']);
+
+  const CODEISH = P ? P.codeish : new Set(['code', 'pre', 'kbd', 'samp', 'var', 'tt']);
+
+  const SCRIPT_FAMILIES = P ? P.scriptFamilies : [
     ['arabic', /[\p{Script=Arabic}\p{Script=Syriac}\p{Script=Thaana}\p{Script=Adlam}]/u],
     ['brahmic', /[\p{Script=Devanagari}\p{Script=Bengali}\p{Script=Gurmukhi}\p{Script=Gujarati}\p{Script=Oriya}\p{Script=Tamil}\p{Script=Telugu}\p{Script=Kannada}\p{Script=Malayalam}\p{Script=Sinhala}\p{Script=Tibetan}]/u],
     ['cjk', /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}\p{Script=Bopomofo}]/u],
     ['seasia', /[\p{Script=Thai}\p{Script=Lao}\p{Script=Khmer}\p{Script=Myanmar}]/u],
   ];
 
-  // Spans of raw text that must never be split, matched against the whole text node
-  // rather than per segment: Intl.Segmenter would otherwise hand us "https", "example"
-  // and "com" as three innocent-looking words.
-  const DENY_SPANS = [
+  const DENY_SPANS = P ? P.denySpans : [
     /\bhttps?:\/\/\S+/gi,
     /\bwww\.[^\s]+/gi,
     /[^\s@]+@[^\s@]+\.[a-z]{2,}/gi,
-    /\bv\d+(\.\d+)+\b|\b\d+\.\d+\.\d+(-[\w.]+)?\b/gi,  // version strings
-    /#[0-9a-fA-F]{3,8}\b/g,                         // hex colours
+    /\bv\d+(\.\d+)+(-[\w.]+)?\b|\b\d+\.\d+\.\d+(-[\w.]+)?\b/gi,
+    /#[0-9a-fA-F]{3,8}\b/g,
     /\b[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\b/g,
-    /\b\d{5,}\b|\b\d{1,3}(,\d{3})+\b/g,               // long or grouped numbers
-    /\b[A-Z]{2}\d{2}[ ]?[A-Z0-9][A-Z0-9 ]{8,28}\b/g, // IBAN-shaped
-    /[$€£¥₹]\s?\d[\d,.]*/g,                         // currency amounts
-    /\b\d+(\.\d+)?\s?(mg|mcg|µg|ug|ml|mL|kg|IU|mmol|mEq|cc)\b/gi, // dosages
-    /\/[\w.-]+\/[\w.-]+|\b[\w.-]+\/[\w.-]+\/[\w./-]+/g, // paths, not and/or
-    /[\u{E000}-\u{F8FF}\u{F0000}-\u{FFFFD}\u{100000}-\u{10FFFD}]/gu, // Private Use Area (icon fonts)
+    /\b\d{5,}\b|\b\d{1,3}(,\d{3})+\b/g,
+    /\b[A-Z]{2}\d{2}[ ]?[A-Z0-9][A-Z0-9 ]{8,28}\b/g,
+    /[$€£¥₹]\s?\d[\d,.]*/g,
+    /\b\d+(\.\d+)?\s?(mg|mcg|µg|ug|ml|mL|kg|IU|mmol|mEq|cc)\b/gi,
+    /\/[\w.-]+\/[\w.-]+|\b[\w.-]+\/[\w.-]+\/[\w./-]+/g,
+    /[\u{E000}-\u{F8FF}\u{F0000}-\u{FFFFD}\u{100000}-\u{10FFFD}]/gu,
   ];
 
-  const ICON_FONT = /font\s*awesome|material icons|material symbols|glyphicon|ionicons|feather|bootstrap-icons/i;
+  const ICON_FONT = P ? P.iconFont
+    : /font\s*awesome|material icons|material symbols|glyphicon|ionicons|feather|bootstrap-icons/i;
+
+  const OPT_OUT_ATTR = P ? P.optOutAttribute : 'data-bebold-skip';
+  const OPT_OUT_META = P ? P.optOutMeta : 'meta[name="bebold"][content="off"]';
 
   // ------------------------------------------------------------- internals ---
 
@@ -194,7 +200,7 @@
       if (p.isContentEditable) return 'editable';
       const role = p.getAttribute && p.getAttribute('role');
       if (role === 'textbox' || role === 'code') return 'editable';
-      if (p.hasAttribute && p.hasAttribute('data-bebold-skip')) return 'site-opt-out';
+      if (p.hasAttribute && p.hasAttribute(OPT_OUT_ATTR)) return 'site-opt-out';
       if (credentialForms.has(p)) return 'credential-form';
     }
     return null;
@@ -207,10 +213,11 @@
     return null;
   }
 
-  const CRED_SELECTOR = 'input[type="password"],[autocomplete*="cc-number" i],' +
-    '[autocomplete*="cc-exp" i],[autocomplete*="cc-csc" i],[autocomplete*="cc-name" i],' +
-    '[autocomplete*="one-time-code" i],[autocomplete*="current-password" i],' +
-    '[autocomplete*="new-password" i]';
+  const CRED_SELECTOR = P ? P.credentialSelector
+    : 'input[type="password"],[autocomplete*="cc-number" i],' +
+      '[autocomplete*="cc-exp" i],[autocomplete*="cc-csc" i],[autocomplete*="cc-name" i],' +
+      '[autocomplete*="one-time-code" i],[autocomplete*="current-password" i],' +
+      '[autocomplete*="new-password" i]';
 
   let credentialForms = new WeakSet();
 
@@ -224,7 +231,7 @@
      on css-tricks.com) refused the entire article. Hidden credential forms still get
      their own subtree excluded, which is the proportionate response. */
   function documentRefusal() {
-    if (document.querySelector('meta[name="bebold"][content="off"]')) return 'site-opt-out';
+    if (document.querySelector(OPT_OUT_META)) return 'site-opt-out';
     credentialForms = new WeakSet();
     let visibleCredential = false;
     for (const field of document.querySelectorAll(CRED_SELECTOR)) {
@@ -298,7 +305,7 @@
           const tag = n.nodeName.toLowerCase();
           if (NON_TEXT.has(tag) || CONTROLS.has(tag) || CODEISH.has(tag)) return NodeFilter.FILTER_REJECT;
           if (n.isContentEditable) return NodeFilter.FILTER_REJECT;
-          if (n.hasAttribute && n.hasAttribute('data-bebold-skip')) return NodeFilter.FILTER_REJECT;
+          if (n.hasAttribute && n.hasAttribute(OPT_OUT_ATTR)) return NodeFilter.FILTER_REJECT;
           return NodeFilter.FILTER_SKIP;
         }
         return n.data && n.data.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
@@ -477,6 +484,25 @@
     },
 
     getConfig() { return structuredCloneish(config); },
+
+    /* A stable fingerprint of the policy actually in force, so CI can prove the
+       generated policy.js and engine.js's inline fallback have not drifted apart. */
+    policySignature() {
+      const set = (s) => [...s].sort().join(',');
+      const res = (list) => list.map((r) => r.source + '/' + r.flags).sort().join('|');
+      return [
+        'nonText:' + set(NON_TEXT),
+        'controls:' + set(CONTROLS),
+        'codeish:' + set(CODEISH),
+        'scripts:' + SCRIPT_FAMILIES.map(([n, r]) => n + '=' + r.source + '/' + r.flags).sort().join('|'),
+        'deny:' + res(DENY_SPANS),
+        'icon:' + ICON_FONT.source + '/' + ICON_FONT.flags,
+        'cred:' + CRED_SELECTOR,
+        'optOut:' + OPT_OUT_META + ',' + OPT_OUT_ATTR,
+      ].join('\n');
+    },
+
+    policySource() { return P ? 'policy.js' : 'inline-fallback'; },
 
     getStats() {
       return {

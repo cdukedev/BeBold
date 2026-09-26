@@ -25,9 +25,11 @@ jobs:
       # `channel: chromium` is load-bearing: the default headless build is
       # chromium_headless_shell, which cannot load extensions at all.
       - run: npx playwright install --with-deps chromium
+      - name: Policy is generated from its JSON source of truth
+        run: node tools/build-policy.mjs --check
       - name: Syntax
         run: |
-          for f in engine.js contentScript.js popup.js options.js background.js; do
+          for f in policy.js engine.js contentScript.js popup.js options.js background.js; do
             node --check "$f"
           done
           node -e 'JSON.parse(require("fs").readFileSync("manifest.json","utf8"))'
@@ -35,10 +37,12 @@ jobs:
         # The privacy claim is testable, so test it.
         run: |
           if grep -nE '\b(fetch|XMLHttpRequest|navigator\.sendBeacon|WebSocket|EventSource)\b' \
-               engine.js contentScript.js background.js popup.js options.js; then
+               policy.js engine.js contentScript.js background.js popup.js options.js; then
             echo "::error::extension source references a network API"; exit 1
           fi
           echo "clean: no network APIs referenced"
+      - name: Policy parity, generated vs inline fallback
+        run: node qa/policy-parity.mjs
       - name: Fixtures
         run: node qa/fixtures.mjs
       - name: Extension wiring

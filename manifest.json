@@ -12,19 +12,33 @@
     "page": "options.html",
     "open_in_tab": true
   },
-  "icons": { "48": "icon.png" },
-  "permissions": ["storage"],
-  "background": { "service_worker": "background.js" },
+  "icons": {
+    "48": "icon.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": [
+        "<all_urls>"
+      ],
       "all_frames": true,
-      "js": ["engine.js", "contentScript.js"]
+      "js": [
+        "policy.js",
+        "engine.js",
+        "contentScript.js"
+      ]
     }
   ],
   "commands": {
     "toggle-site": {
-      "suggested_key": { "default": "Alt+Shift+B" },
+      "suggested_key": {
+        "default": "Alt+Shift+B"
+      },
       "description": "Turn BeBold on or off for this site"
     }
   }

@@ -49,27 +49,52 @@ Requires Chrome 105 or later, which is where the CSS Custom Highlight API landed
 ## Development
 
 ```bash
-npm install          # Playwright and the image-diff tooling
+npm install                # Playwright and the image-diff tooling
+npx playwright install chromium
 
-npm run qa           # invariance and coverage across 38 real sites
-npm run qa:shots     # the same, writing a before/after catalog to qa/out/shots
-node qa/integration.mjs   # the chrome.* wiring: storage, migration, teardown
-npm run spike        # re-measure which CSS properties ::highlight() honours
-npm run coverage:1.4 # measure what the old renderer covered, for comparison
+npm test                   # the gate: 116 assertions, all hermetic
+npm run fixtures           # 66, committed fixture pages, with and without the extension
+npm run integration        # 16, the chrome.* wiring: storage, migration, teardown
+npm run e2e                # 32, the REAL packaged extension in a real browser
+npm run parity             # 3, generated policy vs the engine's inline fallback
+
+npm run qa                 # invariance and coverage across 38 live sites
+npm run qa:shots           # the same, writing before/after screenshots
+npm run catalog            # build the browsable catalog from the last qa run
+
+npm run build:policy       # regenerate policy.js from policy.v1.json
+npm run package            # build the Chrome Web Store zip
+npm run store:shots        # regenerate the store screenshots
 ```
 
-The QA harness runs the real `engine.js` inside Chrome and asserts **invariance** rather
-than pixel equality, because the pixels are supposed to change. It measures each page
-three times per load, using an idle interval as a noise floor, so that a lazy-loading
-image is never mistaken for an extension bug. It also refuses to report a number at all
-unless a positive control transforms first, which is not paranoia: an earlier version of
-this harness confidently reported 0% coverage across 23 sites because Chrome had silently
-loaded no extension.
+### Testing a browser extension in 2026
+
+Chrome 137 removed the `--load-extension` command line switch, and the
+`DisableLoadExtensionCommandLineSwitch` escape hatch went with it. A stable Chrome
+launched with those flags reports **zero installed extensions** and silently does
+nothing, which is how an early version of this harness confidently measured 0% coverage
+across 23 sites.
+
+Two things make the end-to-end tests possible anyway:
+
+- `channel: 'chromium'` is a **Chrome for Testing** build, and it still honours the
+  switch. The removal is a Chrome-branded anti-abuse measure.
+- `headless: true` alone is not enough, because Playwright's default headless build is
+  `chromium_headless_shell`, which cannot load extensions at all. The channel is
+  load-bearing.
+
+Every harness here refuses to report a number unless a positive control transforms first.
+
+The live-site harness asserts **invariance** rather than pixel equality, because the
+pixels are supposed to change. It measures each page three times per load, using an idle
+interval as a noise floor, so a lazy-loading image is never mistaken for an extension bug.
 
 ## Files
 
 | file | role |
 |---|---|
+| `policy.v1.json` | the refusal policy, as pure data. The source of truth, so someone who reads a writing system better than they read JavaScript can change a verdict and open a pull request. |
+| `policy.js` | **generated** from the above by `npm run build:policy`. CI fails if the two drift. |
 | `engine.js` | the renderer. Segmentation, refusal policy, highlight registration, observer, teardown. Deliberately free of every `chrome.*` API so it can be tested directly. |
 | `contentScript.js` | wiring only: reads preferences, decides whether this origin is enabled, drives the engine. |
 | `background.js` | keyboard command handling. |
@@ -79,7 +104,11 @@ loaded no extension.
 ## Privacy
 
 BeBold makes no network requests of any kind. It collects nothing, sends nothing, and
-stores only your preferences in Chrome's own sync storage.
+stores only your preferences in Chrome's own sync storage. See [PRIVACY.md](PRIVACY.md).
+
+That claim is enforced rather than promised: CI fails the build if any source file so
+much as mentions `fetch`, `XMLHttpRequest`, `navigator.sendBeacon`, `WebSocket` or
+`EventSource`.
 
 ## Contributing
 

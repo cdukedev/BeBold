@@ -113,11 +113,13 @@ plumbing. `qa/integration.mjs` runs the real `contentScript.js` against a minima
 
 ## Caveats, stated plainly
 
-- **The packaged extension has not been loaded end to end in a browser.** Chrome 137
-  removed the `--load-extension` switch, so no automated harness can install it. The
-  renderer and the wiring are each tested, but `manifest.json`, the popup UI, and the
-  options page have only been syntax and contract checked. Loading it once by hand via
-  `chrome://extensions` is still required before shipping.
+- ~~The packaged extension has not been loaded end to end in a browser.~~ **Resolved.**
+  Chrome 137 removed the `--load-extension` switch, but that is a Chrome-branded measure:
+  Playwright's `channel: 'chromium'` is a Chrome for Testing build and still honours it.
+  `qa/e2e.mjs` installs the real extension, service worker and all, and asserts against
+  it (32 checks), and `qa/_zipcheck` confirmed the uploadable zip unpacks into a working
+  extension. Note `headless: true` alone is not enough: the default headless build is
+  `chromium_headless_shell`, which cannot load extensions at all.
 - **Chrome 151 only.** `minimum_chrome_version` is 105, and highlight style inheritance
   only landed in 134, so the 105 to 133 range is unverified. If `currentColor` does not
   resolve there, the fix is to set `color` explicitly.

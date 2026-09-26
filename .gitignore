@@ -12,3 +12,7 @@ qa/out/shots/
 # CI publishes it as a build artifact.
 qa/out/catalog.html
 qa/out/catalog-preview.png
+
+# Store upload artifact: rebuild with `npm run package`.
+store/*.zip
+store/.raw/
