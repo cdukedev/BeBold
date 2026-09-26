@@ -8,3 +8,7 @@ spike/out/legibility-all-chrome-dsf2.png
 
 # QA before/after catalog: regenerate with `npm run qa:shots`. Too large for git.
 qa/out/shots/
+# Generated catalog: rebuild with `npm run qa:shots && npm run catalog`.
+# CI publishes it as a build artifact.
+qa/out/catalog.html
+qa/out/catalog-preview.png

@@ -1,0 +1,10 @@
+<!doctype html><meta charset=utf-8><title>whitespace</title>
+<h2>Whitespace fidelity</h2>
+<p>1.4 ran split(/\s+/).join(" ") and destroyed 100% of tabs, newlines and
+non-breaking spaces. \s matches U+00A0 in JavaScript.</p>
+<pre id="pre">Line one has	tabs	between words here
+Line two   has   runs   of   spaces
+Line three has non breaking spaces in it
+Line four keeps a trailing run   </pre>
+<div id="prewrap" style="white-space:pre-wrap">Wrapped	pre	text with runs   of spaces and a newline
+plus a second line of prose to read</div>
