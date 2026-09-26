@@ -1,0 +1,19 @@
+<!doctype html><meta charset=utf-8><title>hostile</title>
+<style>#custom-strong{color:red!important;font-size:40px!important}</style>
+<h2>Hostile page</h2>
+<p>This page already styles #custom-strong, which 1.4 injected 25 copies of per
+paragraph, and it reverts any DOM change to the prose below. A renderer that mutates
+the DOM fights this forever; one that does not never wakes it up.</p>
+<p id="prose">Ordinary prose that should survive a page fighting back against edits.</p>
+<script>
+  let n = 0;
+  window.__mutations = () => n;
+  const target = document.getElementById('prose');
+  const snapshot = target.innerHTML;
+  // observe only the target, and never write unless something actually changed,
+  // otherwise the observer feeds itself and the page never finishes loading
+  new MutationObserver(() => {
+    n++;
+    if (target.innerHTML !== snapshot) target.innerHTML = snapshot;
+  }).observe(target, { childList: true, subtree: true, characterData: true });
+</script>

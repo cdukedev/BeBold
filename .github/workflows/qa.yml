@@ -1,0 +1,76 @@
+name: QA
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+  schedule:
+    # live-site sweep, 07:00 UTC daily. Reports only, never gates.
+    - cron: '0 7 * * *'
+  workflow_dispatch:
+
+jobs:
+  gate:
+    # Fast, hermetic, and the thing that blocks a merge. No network beyond npm.
+    name: Fixtures and wiring
+    runs-on: ubuntu-latest
+    if: github.event_name != 'schedule'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # `channel: chromium` is load-bearing: the default headless build is
+      # chromium_headless_shell, which cannot load extensions at all.
+      - run: npx playwright install --with-deps chromium
+      - name: Policy is generated from its JSON source of truth
+        run: node tools/build-policy.mjs --check
+      - name: Syntax
+        run: |
+          for f in policy.js engine.js contentScript.js popup.js options.js background.js; do
+            node --check "$f"
+          done
+          node -e 'JSON.parse(require("fs").readFileSync("manifest.json","utf8"))'
+      - name: No network calls in the extension
+        # The privacy claim is testable, so test it.
+        run: |
+          if grep -nE '\b(fetch|XMLHttpRequest|navigator\.sendBeacon|WebSocket|EventSource)\b' \
+               policy.js engine.js contentScript.js background.js popup.js options.js; then
+            echo "::error::extension source references a network API"; exit 1
+          fi
+          echo "clean: no network APIs referenced"
+      - name: Policy parity, generated vs inline fallback
+        run: node qa/policy-parity.mjs
+      - name: Fixtures
+        run: node qa/fixtures.mjs
+      - name: Extension wiring
+        run: node qa/integration.mjs
+      - name: End to end, packaged extension
+        run: node qa/e2e.mjs
+
+  live:
+    # Live sites drift under you, so this reports and never blocks.
+    name: Live site sweep
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: node qa/qa.mjs --shots
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: before-after-catalog
+          path: |
+            qa/out/qa.json
+            qa/out/catalog.html
+            qa/out/shots/
+          retention-days: 14

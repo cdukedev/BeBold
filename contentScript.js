@@ -1,152 +1,121 @@
-let originalHTML = document.documentElement.innerHTML;
+/* BeBold 2.0 content script.
+ *
+ * Thin wiring only: reads preferences, decides whether this origin is enabled, and
+ * drives window.BeBoldEngine. All rendering logic lives in engine.js, which is
+ * deliberately free of chrome.* so it can be tested without installing an extension.
+ */
+(function () {
+  'use strict';
 
-// Set the initial state to enabled if it hasn’t been set already
-if (localStorage["extensionEnabled"] === undefined) {
-  localStorage["extensionEnabled"] = "true";
-}
+  const ORIGIN = location.origin;
+  const SITE_KEY = 'site:' + ORIGIN;
 
-// disabledSites is a mapping of site names to their URLs. If the current URL starts with
-// any of the values, then the extension is disabled.
-const disabledSites = [
-   "https://www.linkedin.com/messaging/thread",
-]
-const isDisabledSite = disabledSites.some((site) => window.location.href.startsWith(site))
+  const DEFAULTS = {
+    enabled: true,
+    preset: 'bold',
+    strength: 3,
+    ratio: 'default',
+    scripts: { arabic: false, brahmic: false, cjk: false, seasia: false },
+  };
 
-if (isDisabledSite) {
-  console.log(`Extension is disabled on ${isDisabledSite}`);
-} else {
-  function processTextNode(node) {
-    let content = node.textContent;
-    let words = content.split(/\s+/);
+  /* 1.4 kept its on/off state in the PAGE's localStorage, per origin, unsynced. The
+     only people who ever wrote to it are those who deliberately turned BeBold off on
+     a given site, so silently re-enabling it there is the worst regression available.
+     Read it once, translate it, remove it. Carry this through 2.2, then delete.
 
-    //Only process if more than 50 words are in the text node
-    if (words.length < 5) {
-      return null;
-    }
-
-    let newHTML = words
-      .map((word) => {
-        let halfLength = Math.floor(word.length / 2);
-        let firstHalf = word.slice(0, halfLength);
-        let secondHalf = word.slice(halfLength);
-        return `<strong id="custom-strong">${firstHalf}</strong><span id="custom-span">${secondHalf}</span>`;
-      })
-      .join(" ");
-
-    return newHTML;
-  }
-  function isInsideList(node) {
-    let currentNode = node.parentNode;
-    while (currentNode) {
-      if (
-        currentNode.nodeName.toLowerCase() === "ul" ||
-        currentNode.nodeName.toLowerCase() === "ol"
-      ) {
-        return true;
-      }
-      currentNode = currentNode.parentNode;
-    }
-    return false;
-  }
-
-  function hasRoleTextbox(node) {
-    let currentNode = node;
-    while (currentNode) {
-      if (
-        currentNode.getAttribute &&
-        currentNode.getAttribute("role") === "textbox"
-      ) {
-        return true;
-      }
-      currentNode = currentNode.parentNode;
-    }
-    return false;
-  }
-
-  function traverseDOM(node) {
-    // Check if node or its parent has role="textbox"
-    if (hasRoleTextbox(node)) {
+     The try block is not optional: 1.4 died on this exact access wherever localStorage
+     throws (opaque origins, sandboxed frames, partitioned storage), taking the whole
+     content script with it. */
+  async function migrateLegacyPreference() {
+    let legacy = null;
+    try {
+      legacy = localStorage.getItem('extensionEnabled');
+      if (legacy !== null) localStorage.removeItem('extensionEnabled');
+    } catch {
       return;
     }
-    let skipList = ["svg", "li", "h1", "script", "style", "noscript",
-      "iframe", "canvas", "video", "audio", "img", "input", "textarea",
-      "select", "button", "meter", "progress", "object", "embed", "applet",
-      "frame", "frameset", "map", "param", "area", "link", "base", "meta",
-      "head", "title", "basefont", "col", "colgroup", "frame", "frameset",
-      "noframes", "param"];
-    if (skipList.includes(node.nodeName.toLowerCase())) {
-      return;
-    }
-    if (isInsideList(node)) {
-      return;
-    }
-
-    // Handle text nodes
-    if (
-      node.nodeType === Node.TEXT_NODE &&
-      node.textContent.trim().length > 0
-    ) {
-      let newContent = processTextNode(node);
-      if (newContent && newContent !== "undefined") {
-        let tempElement = document.createElement("div");
-        tempElement.innerHTML = newContent;
-        Array.from(tempElement.childNodes).forEach((newChild) => {
-          node.parentNode.insertBefore(newChild, node);
-        });
-        node.parentNode.removeChild(node);
-      }
-      return;
-    }
-
-    // Recursively process children
-    for (let i = 0; i < node.childNodes.length; i++) {
-      traverseDOM(node.childNodes[i]);
+    if (legacy === 'false') {
+      try { await chrome.storage.sync.set({ [SITE_KEY]: 'off' }); } catch { /* ignore */ }
     }
   }
 
-  function applyChanges() {
-    //add a timeout to allow the DOM to update
-    setTimeout(() => {
-      traverseDOM(document.body);
-    }, 300);
-  }
-
-  function resetDOM() {
-    document.documentElement.innerHTML = originalHTML;
-  }
-
-  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.action === "toggleExtension") {
-      if (request.isEnabled) {
-        localStorage["extensionEnabled"] = "true"; // Set the state to enabled
-        applyChanges();
-      } else {
-        localStorage["extensionEnabled"] = "false"; // Set the state to disabled
-        location.reload();
-      }
+  async function readConfig() {
+    try {
+      const stored = await chrome.storage.sync.get(null);
+      return {
+        enabled: stored.enabled !== false,
+        siteOff: stored[SITE_KEY] === 'off',
+        preset: stored.preset || DEFAULTS.preset,
+        strength: stored.strength || DEFAULTS.strength,
+        ratio: stored.ratio || DEFAULTS.ratio,
+        scripts: Object.assign({}, DEFAULTS.scripts, stored.scripts),
+      };
+    } catch {
+      return Object.assign({ siteOff: false }, DEFAULTS);
     }
-  });
+  }
 
-  // Create a MutationObserver to watch for changes in the DOM
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      mutation.addedNodes.forEach((node) => {
-        if (node.nodeType === 1) {
-          // Check if it's an ELEMENT_NODE
-          traverseDOM(node);
-        }
+  function engineConfig(cfg) {
+    return { preset: cfg.preset, strength: cfg.strength, ratio: cfg.ratio, scripts: cfg.scripts };
+  }
+
+  let current = null;
+
+  async function sync() {
+    const cfg = await readConfig();
+    current = cfg;
+    const shouldRun = cfg.enabled && !cfg.siteOff;
+    const engine = window.BeBoldEngine;
+    if (!engine) return;
+
+    if (shouldRun) {
+      if (engine.getStats().running) engine.setConfig(engineConfig(cfg));
+      else engine.start(engineConfig(cfg));
+    } else if (engine.getStats().running) {
+      engine.stop();
+    }
+  }
+
+  chrome.runtime.onMessage.addListener((req, _sender, sendResponse) => {
+    const engine = window.BeBoldEngine;
+    if (req && req.action === 'getState') {
+      sendResponse({
+        origin: ORIGIN,
+        supported: engine ? engine.supported() : false,
+        config: current,
+        stats: engine ? engine.getStats() : null,
       });
-    });
+      return true;
+    }
+    if (req && req.action === 'refresh') {
+      sync().then(() => sendResponse({ ok: true }));
+      return true;
+    }
+    /* Keyboard command. The service worker cannot resolve the origin itself without
+       the "tabs" permission, so it delegates here where location.origin is free. */
+    if (req && req.action === 'toggleSite') {
+      (async () => {
+        const stored = await chrome.storage.sync.get(SITE_KEY);
+        if (stored[SITE_KEY] === 'off') await chrome.storage.sync.remove(SITE_KEY);
+        else await chrome.storage.sync.set({ [SITE_KEY]: 'off' });
+        sendResponse({ ok: true });
+      })();
+      return true;
+    }
+    return false;
   });
 
-  // Start observing changes to the entire body of the document
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true,
+  chrome.storage.onChanged.addListener((changes, area) => {
+    if (area !== 'sync') return;
+    const keys = Object.keys(changes);
+    if (keys.some((k) => k === 'enabled' || k === SITE_KEY || k === 'preset' ||
+                          k === 'strength' || k === 'ratio' || k === 'scripts')) {
+      sync();
+    }
   });
 
-  // Initial pass to transform existing elements
-  if (localStorage["extensionEnabled"] === "true") {
-    applyChanges();
-  }
-}
+  (async () => {
+    await migrateLegacyPreference();
+    await sync();
+  })();
+})();

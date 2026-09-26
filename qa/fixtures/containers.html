@@ -1,0 +1,17 @@
+<!doctype html><meta charset=utf-8><title>containers</title>
+<style>
+ .box{width:260px;border:1px solid #c00;box-sizing:border-box;font:15px/1.4 Georgia,serif;margin:0 0 8px}
+ .flexrow{display:flex} .flexcol{display:flex;flex-direction:column}
+ .gridbox{display:grid} .ib > *{display:inline-block}
+ .minc{width:min-content} .fl{float:left}
+</style>
+<h2>Bare text nodes in formatting contexts</h2>
+<p>GitHub issue #2: splitting a bare text node into 2N inline elements turns one
+anonymous item into 2N items. Under grid or flex-column each takes its own track,
+which is the reported "each half of the words on a new line" (44px became 380px).</p>
+<div class="box flexrow" id="flexrow">The quick brown fox jumps over the lazy dog</div>
+<div class="box flexcol" id="flexcol">The quick brown fox jumps over the lazy dog</div>
+<div class="box gridbox" id="gridbox">The quick brown fox jumps over the lazy dog</div>
+<div class="box ib" id="ib">The quick brown fox jumps over the lazy dog</div>
+<div class="box minc" id="minc">The quick brown fox jumps over the lazy dog</div>
+<div class="box fl" id="fl">The quick brown fox jumps over the lazy dog</div>

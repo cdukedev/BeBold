@@ -1,0 +1,18 @@
+node_modules
+.DS_Store
+
+# Spike evidence is committed on purpose: the wayfinder tickets cite these paths.
+# The 2x full-page renders are omitted as large duplicates of the 1x versions.
+spike/out/fullpage-chrome-dsf2.png
+spike/out/legibility-all-chrome-dsf2.png
+
+# QA before/after catalog: regenerate with `npm run qa:shots`. Too large for git.
+qa/out/shots/
+# Generated catalog: rebuild with `npm run qa:shots && npm run catalog`.
+# CI publishes it as a build artifact.
+qa/out/catalog.html
+qa/out/catalog-preview.png
+
+# Store upload artifact: rebuild with `npm run package`.
+store/*.zip
+store/.raw/

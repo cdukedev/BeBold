@@ -1,0 +1,12 @@
+<!doctype html><meta charset=utf-8><title>shadow</title>
+<h2>Shadow DOM</h2>
+<p id="light">Light DOM prose that should be treated exactly as normal text is here.</p>
+<div id="host1"></div><div id="host2"></div>
+<script>
+  const r1 = document.getElementById('host1').attachShadow({mode:'open'});
+  r1.innerHTML = '<p id="s1">Shadow root prose that should also be treated normally here.</p><div id="inner"></div>';
+  const r2 = r1.getElementById('inner').attachShadow({mode:'open'});
+  r2.innerHTML = '<p id="s2">Nested shadow root prose that should also be treated here.</p>';
+  const r3 = document.getElementById('host2').attachShadow({mode:'closed'});
+  r3.innerHTML = '<p id="s3">Closed shadow root prose which we cannot reach at all.</p>';
+</script>

@@ -1,0 +1,832 @@
+{
+  "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+  "api": {
+    "cssHighlights": true,
+    "HighlightCtor": true,
+    "StaticRangeCtor": true,
+    "IntlSegmenter": true,
+    "getRangesForNode": false,
+    "highlightsFromPoint": true,
+    "highlightProto": [
+      "priority",
+      "type",
+      "size",
+      "add",
+      "clear",
+      "delete",
+      "entries",
+      "forEach",
+      "has",
+      "keys",
+      "values",
+      "constructor"
+    ],
+    "computedStyleIntrospects": {
+      "strokeWidth": "0px",
+      "color": "rgb(17, 17, 17)",
+      "elementOwnStrokeWidth": "0px"
+    }
+  },
+  "invariance": {
+    "bApplied": true,
+    "prefixRanges": 33,
+    "suffixRanges": 30,
+    "before": {
+      "a": {
+        "box": {
+          "w": 560,
+          "h": 76.78
+        },
+        "lines": 3,
+        "text": "The quick brown fox jumps over the lazy dog while reading 500 mg of v2.14.0-rc.1 documentation. مرحبا بالعالم اليوم. สวัสดีชาวโลก. 東京の天気は晴れです。 👨‍👩‍👧‍👦 naïve café résumé.",
+        "inner": "The quick brown fox jumps over the lazy dog while reading 500 mg of v2.14.0-rc.1 documentation. مرحبا بالعالم اليوم. สวัสดีชาวโลก. 東京の天気は晴れです。 👨‍👩‍👧‍👦 naïve café résumé.",
+        "kids": 1
+      },
+      "b": {
+        "box": {
+          "w": 560,
+          "h": 76.78
+        },
+        "lines": 3,
+        "text": "The quick brown fox jumps over the lazy dog while reading 500 mg of v2.14.0-rc.1 documentation. مرحبا بالعالم اليوم. สวัสดีชาวโลก. 東京の天気は晴れです。 👨‍👩‍👧‍👦 naïve café résumé.",
+        "inner": "The quick brown fox jumps over the lazy dog while reading 500 mg of v2.14.0-rc.1 documentation. مرحبا بالعالم اليوم. สวัสดีชาวโลก. 東京の天気は晴れです。 👨‍👩‍👧‍👦 naïve café résumé.",
+        "kids": 1
+      },
+      "c": {
+        "box": {
+          "w": 560,
+          "h": 76.78
+        },
+        "lines": 3,
+        "text": "The quick brown fox jumps over the lazy dog while reading 500 mg of v2.14.0-rc.1 documentation. مرحبا بالعالم اليوم. สวัสดีชาวโลก. 東京の天気は晴れです。 👨‍👩‍👧‍👦 naïve café résumé.",
+        "inner": "The quick brown fox jumps over the lazy dog while reading 500 mg of v2.14.0-rc.1 documentation. مرحبا بالعالم اليوم. สวัสดีชาวโลก. 東京の天気は晴れです。 👨‍👩‍👧‍👦 naïve café résumé.",
+        "kids": 1
+      }
+    },
+    "after": {
+      "a": {
+        "box": {
+          "w": 560,
+          "h": 76.78
+        },
+        "lines": 3,
+        "text": "The quick brown fox jumps over the lazy dog while reading 500 mg of v2.14.0-rc.1 documentation. مرحبا بالعالم اليوم. สวัสดีชาวโลก. 東京の天気は晴れです。 👨‍👩‍👧‍👦 naïve café résumé.",
+        "inner": "The quick brown fox jumps over the lazy dog while reading 500 mg of v2.14.0-rc.1 documentation. مرحبا بالعالم اليوم. สวัสดีชาวโลก. 東京の天気は晴れです。 👨‍👩‍👧‍👦 naïve café résumé.",
+        "kids": 1,
+        "sel": "The quick brown fox jumps over the lazy dog while reading 500 mg of v2.14.0-rc.1 documentation. مرحبا بالعالم اليوم. สวัสดีชาวโลก. 東京の天気は晴れです。 👨‍👩‍👧‍👦 naïve café résumé.",
+        "descendants": 0
+      },
+      "b": {
+        "box": {
+          "w": 560,
+          "h": 79.78
+        },
+        "lines": 6,
+        "text": "The quick brown fox jumps over the lazy dog while reading 500 mg of v2.14.0-rc.1 documentation. مرحبا بالعالم اليوم. สวัสดีชาวโลก. 東京の天気は晴れです。 👨‍👩‍👧‍👦 naïve café résumé.",
+        "inner": "The quick brown fox jumps over the lazy dog while reading 500 mg of v2.14.0-rc.1 documentation. مرحبا بالعالم اليوم. สวัสดีชาวโลก. 東京の天気は晴れです。 👨‍👩‍👧‍👦 naïve café résumé.",
+        "kids": 74,
+        "sel": "The quick brown fox jumps over the lazy dog while reading 500 mg of v2.14.0-rc.1 documentation. مرحبا بالعالم اليوم. สวัสดีชาวโลก. 東京の天気は晴れです。 👨‍👩‍👧‍👦 naïve café résumé.",
+        "descendants": 50
+      },
+      "c": {
+        "box": {
+          "w": 560,
+          "h": 76.78
+        },
+        "lines": 3,
+        "text": "The quick brown fox jumps over the lazy dog while reading 500 mg of v2.14.0-rc.1 documentation. مرحبا بالعالم اليوم. สวัสดีชาวโลก. 東京の天気は晴れです。 👨‍👩‍👧‍👦 naïve café résumé.",
+        "inner": "The quick brown fox jumps over the lazy dog while reading 500 mg of v2.14.0-rc.1 documentation. مرحبا بالعالم اليوم. สวัสดีชาวโลก. 東京の天気は晴れです。 👨‍👩‍👧‍👦 naïve café résumé.",
+        "kids": 1,
+        "sel": "The quick brown fox jumps over the lazy dog while reading 500 mg of v2.14.0-rc.1 documentation. مرحبا بالعالم اليوم. สวัสดีชาวโลก. 東京の天気は晴れです。 👨‍👩‍👧‍👦 naïve café résumé.",
+        "descendants": 0
+      }
+    },
+    "duplicateIds": {
+      "customStrong": 25,
+      "customSpan": 25,
+      "getElementByIdReturnsOne": true
+    }
+  },
+  "issue2": [
+    {
+      "mode": "display:flex",
+      "baseline": {
+        "box": {
+          "w": 260,
+          "h": 44
+        },
+        "lines": 2,
+        "items": 0
+      },
+      "legacy": {
+        "box": {
+          "w": 260,
+          "h": 23
+        },
+        "lines": 2,
+        "items": 18
+      },
+      "highlight": {
+        "box": {
+          "w": 260,
+          "h": 44
+        },
+        "lines": 2,
+        "items": 0
+      }
+    },
+    {
+      "mode": "display:flex; column",
+      "baseline": {
+        "box": {
+          "w": 260,
+          "h": 44
+        },
+        "lines": 2,
+        "items": 0
+      },
+      "legacy": {
+        "box": {
+          "w": 260,
+          "h": 380
+        },
+        "lines": 36,
+        "items": 18
+      },
+      "highlight": {
+        "box": {
+          "w": 260,
+          "h": 44
+        },
+        "lines": 2,
+        "items": 0
+      }
+    },
+    {
+      "mode": "display:grid",
+      "baseline": {
+        "box": {
+          "w": 260,
+          "h": 44
+        },
+        "lines": 2,
+        "items": 0
+      },
+      "legacy": {
+        "box": {
+          "w": 260,
+          "h": 380
+        },
+        "lines": 36,
+        "items": 18
+      },
+      "highlight": {
+        "box": {
+          "w": 260,
+          "h": 44
+        },
+        "lines": 2,
+        "items": 0
+      }
+    },
+    {
+      "mode": "children inline-block",
+      "baseline": {
+        "box": {
+          "w": 260,
+          "h": 44
+        },
+        "lines": 2,
+        "items": 0
+      },
+      "legacy": {
+        "box": {
+          "w": 260,
+          "h": 44
+        },
+        "lines": 2,
+        "items": 18
+      },
+      "highlight": {
+        "box": {
+          "w": 260,
+          "h": 44
+        },
+        "lines": 2,
+        "items": 0
+      }
+    }
+  ],
+  "whitespace": {
+    "baseline": {
+      "text": "Line one has\ttabs\tbetween words here\nLine two   has   runs   of   spaces\nLine three has non breaking spaces in it\n",
+      "box": {
+        "w": 578,
+        "h": 81
+      },
+      "lines": 3
+    },
+    "legacy": {
+      "text": "Line one has tabs between words here Line two has runs of spaces Line three has non breaking spaces in it ",
+      "box": {
+        "w": 578,
+        "h": 39
+      },
+      "lines": 1
+    },
+    "highlight": {
+      "text": "Line one has\ttabs\tbetween words here\nLine two   has   runs   of   spaces\nLine three has non breaking spaces in it\n",
+      "box": {
+        "w": 578,
+        "h": 81
+      },
+      "lines": 3
+    },
+    "legacyIdentical": false,
+    "highlightIdentical": true
+  },
+  "scope": {
+    "shadowRegistered": true,
+    "iframeDeferred": true,
+    "shadowPixels": {
+      "differs": true,
+      "changed": 10583,
+      "total": 31680,
+      "pct": 33.406
+    },
+    "shadowPainted": true,
+    "iframe": {
+      "parentRegistryAccepted": true,
+      "childHasHighlights": true,
+      "childRegistryAccepted": true
+    }
+  },
+  "segmentation": {
+    "latin": [
+      {
+        "word": "reading",
+        "cut": 4,
+        "prefix": "read",
+        "suffix": "ing"
+      },
+      {
+        "word": "comprehension",
+        "cut": 7,
+        "prefix": "compreh",
+        "suffix": "ension"
+      }
+    ],
+    "latin_LEGACY": [
+      {
+        "word": "reading",
+        "prefix": "rea",
+        "suffix": "ding"
+      },
+      {
+        "word": "comprehension",
+        "prefix": "compre",
+        "suffix": "hension"
+      }
+    ],
+    "arabic": [
+      {
+        "word": "مرحبا",
+        "cut": 3,
+        "prefix": "مرح",
+        "suffix": "با"
+      },
+      {
+        "word": "بالعالم",
+        "cut": 4,
+        "prefix": "بالع",
+        "suffix": "الم"
+      }
+    ],
+    "arabic_LEGACY": [
+      {
+        "word": "مرحبا",
+        "prefix": "مر",
+        "suffix": "حبا"
+      },
+      {
+        "word": "بالعالم",
+        "prefix": "بال",
+        "suffix": "عالم"
+      }
+    ],
+    "thai": [
+      {
+        "word": "สวัสดี",
+        "cut": 3,
+        "prefix": "สวั",
+        "suffix": "สดี"
+      },
+      {
+        "word": "ชาว",
+        "cut": 2,
+        "prefix": "ชา",
+        "suffix": "ว"
+      },
+      {
+        "word": "โลก",
+        "cut": 2,
+        "prefix": "โล",
+        "suffix": "ก"
+      }
+    ],
+    "thai_LEGACY": [
+      {
+        "word": "สวัสดีชาวโลก",
+        "prefix": "สวัสดี",
+        "suffix": "ชาวโลก"
+      }
+    ],
+    "japanese": [
+      {
+        "word": "東京",
+        "cut": 1,
+        "prefix": "東",
+        "suffix": "京"
+      },
+      {
+        "word": "の",
+        "cut": 1,
+        "prefix": "の",
+        "suffix": ""
+      },
+      {
+        "word": "天気",
+        "cut": 1,
+        "prefix": "天",
+        "suffix": "気"
+      },
+      {
+        "word": "は",
+        "cut": 1,
+        "prefix": "は",
+        "suffix": ""
+      },
+      {
+        "word": "晴れ",
+        "cut": 1,
+        "prefix": "晴",
+        "suffix": "れ"
+      },
+      {
+        "word": "です",
+        "cut": 1,
+        "prefix": "で",
+        "suffix": "す"
+      }
+    ],
+    "japanese_LEGACY": [
+      {
+        "word": "東京の天気は晴れです",
+        "prefix": "東京の天気",
+        "suffix": "は晴れです"
+      }
+    ],
+    "emoji": [
+      {
+        "word": "family",
+        "cut": 3,
+        "prefix": "fam",
+        "suffix": "ily"
+      }
+    ],
+    "emoji_LEGACY": [
+      {
+        "word": "👨‍👩‍👧‍👦",
+        "prefix": "👨‍👩",
+        "suffix": "‍👧‍👦"
+      },
+      {
+        "word": "family",
+        "prefix": "fam",
+        "suffix": "ily"
+      }
+    ],
+    "devanagari": [
+      {
+        "word": "नमस्ते",
+        "cut": 2,
+        "prefix": "नम",
+        "suffix": "स्ते"
+      },
+      {
+        "word": "दुनिया",
+        "cut": 4,
+        "prefix": "दुनि",
+        "suffix": "या"
+      }
+    ],
+    "devanagari_LEGACY": [
+      {
+        "word": "नमस्ते",
+        "prefix": "नमस",
+        "suffix": "्ते"
+      },
+      {
+        "word": "दुनिया",
+        "prefix": "दुन",
+        "suffix": "िया"
+      }
+    ]
+  },
+  "probes": [
+    {
+      "id": "ctl-range",
+      "label": "CONTROL color:#d00 via Range",
+      "decl": "color:#d00",
+      "expect": "yes",
+      "registered": true,
+      "error": null,
+      "pixels": {
+        "differs": true,
+        "changed": 1667,
+        "total": 30720,
+        "pct": 5.426
+      },
+      "renders": true
+    },
+    {
+      "id": "ctl-static",
+      "label": "CONTROL color:#d00 via StaticRange",
+      "decl": "color:#d00",
+      "expect": "yes",
+      "registered": true,
+      "error": null,
+      "pixels": {
+        "differs": true,
+        "changed": 1667,
+        "total": 30720,
+        "pct": 5.426
+      },
+      "renders": true
+    },
+    {
+      "id": "bg",
+      "label": "background-color:#ff0",
+      "decl": "background-color:#ff0",
+      "expect": null,
+      "registered": true,
+      "error": null,
+      "pixels": {
+        "differs": true,
+        "changed": 8919,
+        "total": 30720,
+        "pct": 29.033
+      },
+      "renders": true
+    },
+    {
+      "id": "deco",
+      "label": "text-decoration:underline wavy #d00",
+      "decl": "text-decoration:underline wavy #d00",
+      "expect": null,
+      "registered": true,
+      "error": null,
+      "pixels": {
+        "differs": true,
+        "changed": 797,
+        "total": 30720,
+        "pct": 2.594
+      },
+      "renders": true
+    },
+    {
+      "id": "shadow024",
+      "label": "text-shadow faux-bold .024em",
+      "decl": "text-shadow:.024em 0 0 currentColor,-.024em 0 0 currentColor",
+      "expect": null,
+      "registered": true,
+      "error": null,
+      "pixels": {
+        "differs": true,
+        "changed": 152,
+        "total": 30720,
+        "pct": 0.495
+      },
+      "renders": true
+    },
+    {
+      "id": "shadow05",
+      "label": "text-shadow faux-bold .05em",
+      "decl": "text-shadow:.05em 0 0 currentColor,-.05em 0 0 currentColor",
+      "expect": null,
+      "registered": true,
+      "error": null,
+      "pixels": {
+        "differs": true,
+        "changed": 822,
+        "total": 30720,
+        "pct": 2.676
+      },
+      "renders": true
+    },
+    {
+      "id": "shadow4way",
+      "label": "text-shadow faux-bold 4-way .03em",
+      "decl": "text-shadow:.03em 0 0 currentColor,-.03em 0 0 currentColor,0 .02em 0 currentColor,0 -.02em 0 currentColor",
+      "expect": null,
+      "registered": true,
+      "error": null,
+      "pixels": {
+        "differs": true,
+        "changed": 631,
+        "total": 30720,
+        "pct": 2.054
+      },
+      "renders": true
+    },
+    {
+      "id": "fw900",
+      "label": "font-weight:900   << THE CRUX",
+      "decl": "font-weight:900",
+      "expect": null,
+      "registered": true,
+      "error": null,
+      "pixels": {
+        "differs": false,
+        "changed": 0,
+        "total": 30720,
+        "pct": 0
+      },
+      "renders": false
+    },
+    {
+      "id": "fwbold",
+      "label": "font-weight:bold",
+      "decl": "font-weight:bold",
+      "expect": null,
+      "registered": true,
+      "error": null,
+      "pixels": {
+        "differs": false,
+        "changed": 0,
+        "total": 30720,
+        "pct": 0
+      },
+      "renders": false
+    },
+    {
+      "id": "stroke",
+      "label": "-webkit-text-stroke:2px #d00  << CONTESTED",
+      "decl": "-webkit-text-stroke:2px #d00",
+      "expect": null,
+      "registered": true,
+      "error": null,
+      "pixels": {
+        "differs": false,
+        "changed": 0,
+        "total": 30720,
+        "pct": 0
+      },
+      "renders": false
+    },
+    {
+      "id": "strokew",
+      "label": "-webkit-text-stroke-width:2px",
+      "decl": "-webkit-text-stroke-width:2px",
+      "expect": null,
+      "registered": true,
+      "error": null,
+      "pixels": {
+        "differs": false,
+        "changed": 0,
+        "total": 30720,
+        "pct": 0
+      },
+      "renders": false
+    },
+    {
+      "id": "strokewc",
+      "label": "-webkit-text-stroke-width + -color",
+      "decl": "-webkit-text-stroke-width:2px;-webkit-text-stroke-color:#d00",
+      "expect": null,
+      "registered": true,
+      "error": null,
+      "pixels": {
+        "differs": false,
+        "changed": 0,
+        "total": 30720,
+        "pct": 0
+      },
+      "renders": false
+    },
+    {
+      "id": "fill",
+      "label": "-webkit-text-fill-color:#0a0",
+      "decl": "-webkit-text-fill-color:#0a0",
+      "expect": null,
+      "registered": true,
+      "error": null,
+      "pixels": {
+        "differs": false,
+        "changed": 0,
+        "total": 30720,
+        "pct": 0
+      },
+      "renders": false
+    },
+    {
+      "id": "emphasis",
+      "label": "text-emphasis:filled circle #d00  << CONTESTED",
+      "decl": "text-emphasis:filled circle #d00",
+      "expect": null,
+      "registered": true,
+      "error": null,
+      "pixels": {
+        "differs": false,
+        "changed": 0,
+        "total": 30720,
+        "pct": 0
+      },
+      "renders": false
+    },
+    {
+      "id": "paintorder",
+      "label": "paint-order:stroke fill + stroke 2px",
+      "decl": "paint-order:stroke fill;-webkit-text-stroke:2px #d00",
+      "expect": null,
+      "registered": true,
+      "error": null,
+      "pixels": {
+        "differs": false,
+        "changed": 0,
+        "total": 30720,
+        "pct": 0
+      },
+      "renders": false
+    },
+    {
+      "id": "fvs",
+      "label": "font-variation-settings 'wght' 900",
+      "decl": "font-variation-settings:'wght' 900",
+      "expect": null,
+      "registered": true,
+      "error": null,
+      "pixels": {
+        "differs": false,
+        "changed": 0,
+        "total": 30720,
+        "pct": 0
+      },
+      "renders": false
+    },
+    {
+      "id": "fsynth",
+      "label": "font-synthesis-weight + font-weight:900",
+      "decl": "font-synthesis-weight:auto;font-weight:900",
+      "expect": null,
+      "registered": true,
+      "error": null,
+      "pixels": {
+        "differs": false,
+        "changed": 0,
+        "total": 30720,
+        "pct": 0
+      },
+      "renders": false
+    },
+    {
+      "id": "neg-ls",
+      "label": "NEG letter-spacing:6px",
+      "decl": "letter-spacing:6px",
+      "expect": "no",
+      "registered": true,
+      "error": null,
+      "pixels": {
+        "differs": false,
+        "changed": 0,
+        "total": 30720,
+        "pct": 0
+      },
+      "renders": false
+    },
+    {
+      "id": "neg-it",
+      "label": "NEG font-style:italic",
+      "decl": "font-style:italic",
+      "expect": "no",
+      "registered": true,
+      "error": null,
+      "pixels": {
+        "differs": false,
+        "changed": 0,
+        "total": 30720,
+        "pct": 0
+      },
+      "renders": false
+    },
+    {
+      "id": "neg-ff",
+      "label": "NEG font-family:monospace",
+      "decl": "font-family:monospace",
+      "expect": "no",
+      "registered": true,
+      "error": null,
+      "pixels": {
+        "differs": false,
+        "changed": 0,
+        "total": 30720,
+        "pct": 0
+      },
+      "renders": false
+    },
+    {
+      "id": "neg-tt",
+      "label": "NEG text-transform:uppercase",
+      "decl": "text-transform:uppercase",
+      "expect": "no",
+      "registered": true,
+      "error": null,
+      "pixels": {
+        "differs": false,
+        "changed": 0,
+        "total": 30720,
+        "pct": 0
+      },
+      "renders": false
+    },
+    {
+      "id": "neg-op",
+      "label": "NEG opacity:.2",
+      "decl": "opacity:.2",
+      "expect": "no",
+      "registered": true,
+      "error": null,
+      "pixels": {
+        "differs": false,
+        "changed": 0,
+        "total": 30720,
+        "pct": 0
+      },
+      "renders": false
+    },
+    {
+      "id": "neg-fil",
+      "label": "NEG filter:blur(2px)",
+      "decl": "filter:blur(2px)",
+      "expect": "no",
+      "registered": true,
+      "error": null,
+      "pixels": {
+        "differs": false,
+        "changed": 0,
+        "total": 30720,
+        "pct": 0
+      },
+      "renders": false
+    }
+  ],
+  "registeredHighlights": 55,
+  "browser": {
+    "label": "chrome",
+    "channel": "chrome",
+    "dsf": 2
+  },
+  "browserVersion": "151.0.7922.170",
+  "consoleErrors": [],
+  "noiseFloor": {
+    "differs": false,
+    "changed": 0,
+    "total": 30720,
+    "pct": 0
+  },
+  "aria": {
+    "inv-a": "- paragraph: The quick brown fox jumps over the lazy dog while reading 500 mg of v2.14.0-rc.1 documentation. مرحبا بالعالم اليوم. สวัสดีชาวโลก. 東京の天気は晴れです。 👨‍👩‍👧‍👦 naïve café résumé.",
+    "inv-b": "- paragraph:\n  - strong: T\n  - text: he\n  - strong: qu\n  - text: ick\n  - strong: br\n  - text: own\n  - strong: f\n  - text: ox\n  - strong: ju\n  - text: mps\n  - strong: ov\n  - text: er\n  - strong: t\n  - text: he\n  - strong: la\n  - text: zy\n  - strong: d\n  - text: og\n  - strong: wh\n  - text: ile\n  - strong: rea\n  - text: ding\n  - strong: \"5\"\n  - text: \"00\"\n  - strong: m\n  - text: g\n  - strong: o\n  - text: f\n  - strong: v2.14.\n  - text: 0-rc.1\n  - strong: documen\n  - text: tation.\n  - strong: مر\n  - text: حبا\n  - strong: بال\n  - text: عالم\n  - strong: الي\n  - text: وم.\n  - strong: สวัสดี\n  - text: ชาวโลก.\n  - strong: 東京の天気\n  - text: は晴れです。\n  - strong: 👨‍👩\n  - text: ‍👧‍👦\n  - strong: na\n  - text: ïve\n  - strong: ca\n  - text: fé\n  - strong: rés\n  - text: umé.",
+    "inv-c": "- paragraph: The quick brown fox jumps over the lazy dog while reading 500 mg of v2.14.0-rc.1 documentation. مرحبا بالعالم اليوم. สวัสดีชาวโลก. 東京の天気は晴れです。 👨‍👩‍👧‍👦 naïve café résumé."
+  },
+  "axTreeSample": {
+    "totalNodes": 1593,
+    "quickBrownMatches": 20,
+    "sample": [
+      {
+        "role": "StaticText",
+        "name": "The quick brown fox jumps over the lazy dog while reading 500 mg of v2.14.0-rc.1 documentation. مرحبا بالعالم اليوم. สวั"
+      },
+      {
+        "role": "StaticText",
+        "name": "The quick brown fox jumps over the lazy dog while reading 500 mg of v2.14.0-rc.1 documentation. مرحبا بالعالم اليوم. สวั"
+      },
+      {
+        "role": "StaticText",
+        "name": "The quick brown fox jumps over the lazy dog"
+      },
+      {
+        "role": "StaticText",
+        "name": "The quick brown fox jumps over the lazy dog"
+      },
+      {
+        "role": "StaticText",
+        "name": "The quick brown fox jumps over the lazy dog"
+      },
+      {
+        "role": "StaticText",
+        "name": "The quick brown fox jumps over the lazy dog"
+      }
+    ]
+  }
+}
