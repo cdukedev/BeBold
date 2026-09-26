@@ -155,8 +155,17 @@ damage that 2.0 fixes**. It is now actively misleading. Unlink it, or re-record.
 Tick nothing in the data collection list. Full answers and the three required
 certifications are in [`PRIVACY.md`](../PRIVACY.md).
 
-Privacy policy URL: publish `PRIVACY.md` at a stable address. Enabling GitHub Pages on the
-repository gives `https://cdukedev.github.io/BeBold/` for free.
+Privacy policy URL:
+
+```
+https://github.com/cdukedev/BeBold/blob/main/PRIVACY.md
+```
+
+Verified reachable (HTTP 200) and public. GitHub Pages is now enabled on the repo, but it
+inherits an account-level custom domain, `cdukedev.me`, which currently has **no DNS
+records**, so `cdukedev.github.io/BeBold/` 301-redirects into a domain that does not
+resolve. Point that domain at GitHub and `https://cdukedev.me/BeBold/PRIVACY.html` starts
+working; until then use the blob URL above.
 
 ## Permission justifications
 
@@ -169,20 +178,72 @@ repository gives `https://cdukedev.github.io/BeBold/` for free.
 
 ## Release plan
 
-Publish at a **10% partial rollout**, hold for 48 hours, then go to 100%.
+**Percentage rollout is not available for this extension.** The Chrome Web Store restricts
+it to items with more than 10,000 active users; BeBold has 878. The earlier plan in this
+document called for a 10% rollout, which cannot be done.
 
-2.0 goes from roughly half the words on a page to nearly all of them, so it will visibly
-do something on pages where 1.4 appeared inert. That is the point, but it is a large
-behavioural change arriving for people who did not ask for it today, and a staged rollout
-keeps a surprise from reaching all 878 at once.
+Source: [Publish your extension](https://developer.chrome.com/docs/extensions/develop/migrate/publish-mv3),
+"Gradually roll-out your release": *"This is only available for extensions with more than
+10,000 active users."*
+
+What is available instead, and is arguably better for a change this size:
+
+### 1. Submit with deferred publish
+
+When you submit, **uncheck "Publish automatically"**. The item goes through review but does
+not go live until you press publish, so review time and release timing are decoupled and
+you choose the moment. Most extensions are reviewed within three days.
+
+### 2. Optional, a trusted-tester pass first
+
+Available at any user count, unlike percentage rollout. Developer Dashboard → **Account**
+tab → **Management** → **Trusted Testers**, add email addresses, then set the item's
+**Distribution → Visibility** to **Private**. A Google group or an unlisted direct link
+work the same way.
+
+Worth doing because 2.0 will visibly do something on pages where 1.4 appeared inert, and
+that is a large behavioural change arriving for people who did not ask for it today.
+
+### 3. If something goes wrong
+
+The Web Store supports [rollback](https://developer.chrome.com/docs/webstore/rollback) to a
+previous version, so a bad release is recoverable without shipping a hasty fix.
+
+### Who does not get the update
 
 Roughly 9 to 11 users are below the `minimum_chrome_version` of 105. They are not stranded:
-the store simply does not offer them the update, they stay on a working 1.4, and they get
-2.0 automatically once their Chrome catches up.
+the store does not offer them the update, they stay on a working 1.4, and they receive 2.0
+automatically once their Chrome crosses 105.
 
 ---
 
-## Reviewer replies, to post after the rollout reaches 100%
+## Submission checklist
+
+Developer Dashboard → the BeBold item → work down the tabs.
+
+**Package**
+- [ ] Upload `store/bebold-2.0.zip` (19 KB, built by `npm run package`, verified loadable)
+
+**Store listing**
+- [ ] Description: replace with the block above
+- [ ] Screenshots: delete the existing ones, upload all five from `store/screenshots/`
+- [ ] Promo tile and marquee: replace or remove (the current ones predate 2.0)
+- [ ] Video: unlink `oyP7TgbXGe8`, it demonstrates the layout damage 2.0 fixes
+- [ ] Category: Accessibility, unchanged
+
+**Privacy**
+- [ ] Single purpose: "Bolds the start of each word on web pages to make text easier to read."
+- [ ] Permission justifications: the table above
+- [ ] Data usage: tick nothing, then all three certifications
+- [ ] Privacy policy URL: the blob URL above
+
+**Submit**
+- [ ] Uncheck **Publish automatically**
+- [ ] Submit for review
+- [ ] On approval, publish when you are ready
+- [ ] After it is live, post the reviewer replies below
+
+## Reviewer replies, to post once 2.0 is live
 
 ### To the one-star, "yeah it just doesn't work on anything", December 2025
 
