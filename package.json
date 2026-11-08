@@ -5,6 +5,8 @@
   "type": "module",
   "description": "BeBold browser extension: bolds the start of each word using the CSS Custom Highlight API.",
   "scripts": {
+    "dev:site": "python3 -m http.server 4173 --directory site",
+    "build:site": "node tools/build-site.mjs",
     "test": "node tools/build-policy.mjs --check && node qa/policy-parity.mjs && node qa/fixtures.mjs && node qa/integration.mjs && node qa/e2e.mjs",
     "fixtures": "node qa/fixtures.mjs",
     "integration": "node qa/integration.mjs",

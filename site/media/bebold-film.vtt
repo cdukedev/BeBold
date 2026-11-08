@@ -1,0 +1,237 @@
+WEBVTT
+
+1
+00:00:01.116 --> 00:00:02.210
+A small anchor.
+
+2
+00:00:02.470 --> 00:00:03.591
+Your way to read.
+
+3
+00:00:04.955 --> 00:00:07.707
+Here is a paragraph, just as the page wrote it.
+
+4
+00:00:08.265 --> 00:00:10.134
+Open BeBold, and turn it on.
+
+5
+00:00:12.439 --> 00:00:15.639
+The start of each word gains a little weight, and nothing moves.
+
+6
+00:00:19.173 --> 00:00:21.840
+Some people find that easier to hold their place.
+
+7
+00:00:22.026 --> 00:00:23.634
+Others find it distracting.
+
+8
+00:00:23.851 --> 00:00:27.061
+It is a reading preference, so keep it only if it helps you.
+
+9
+00:00:28.797 --> 00:00:31.599
+The count describes this page, not how you read it.
+
+10
+00:00:32.839 --> 00:00:36.414
+In settings, a live preview shows each choice as you make it.
+
+11
+00:00:37.964 --> 00:00:39.202
+Bold adds weight.
+
+12
+00:00:40.082 --> 00:00:41.844
+Underline marks it with a line.
+
+13
+00:00:42.972 --> 00:00:45.766
+Background tint sets a faint wash behind it.
+
+14
+00:00:48.482 --> 00:00:50.487
+Choose the treatment that works for you.
+
+15
+00:00:51.727 --> 00:00:54.752
+Strength has five settings, from subtle to maximum.
+
+16
+00:01:00.736 --> 00:01:05.660
+And you decide how much of each word gets the anchor: shorter, default, or longer.
+
+17
+00:01:08.040 --> 00:01:10.276
+This reader keeps bold, at strength four.
+
+18
+00:01:11.578 --> 00:01:13.857
+Real pages are more than paragraphs.
+
+19
+00:01:14.167 --> 00:01:17.810
+Headings, lists, links, and columns receive the same anchor.
+
+20
+00:01:19.422 --> 00:01:23.278
+Off or on, every element in this recording stays in the same place.
+
+21
+00:01:26.750 --> 00:01:30.084
+That is because BeBold paints an overlay of emphasis.
+
+22
+00:01:30.425 --> 00:01:32.380
+The original text stays intact.
+
+23
+00:01:34.426 --> 00:01:37.116
+Select a sentence, and it selects like any other.
+
+24
+00:01:38.067 --> 00:01:41.352
+Copy it into a plain text note, and the words arrive whole.
+
+25
+00:01:42.493 --> 00:01:45.352
+Search the page, and the full word is still found.
+
+26
+00:01:46.654 --> 00:01:48.952
+Some text should stay exactly as written.
+
+27
+00:01:50.378 --> 00:01:52.609
+Ordinary sentences get the anchor.
+
+28
+00:01:52.888 --> 00:01:54.415
+A code snippet does not.
+
+29
+00:01:54.694 --> 00:01:58.652
+Neither does a dosage, a version number, or an account identifier.
+
+30
+00:01:59.024 --> 00:02:01.709
+Anything you can type into stays plain as well.
+
+31
+00:02:02.577 --> 00:02:05.614
+These rules are careful, but they are not a guarantee.
+
+32
+00:02:06.730 --> 00:02:11.141
+And when a page shows a password field, BeBold leaves the whole page alone.
+
+33
+00:02:12.815 --> 00:02:15.202
+Some pages are left alone on purpose.
+
+34
+00:02:18.612 --> 00:02:21.467
+Back on the article, this switch controls one site.
+
+35
+00:02:23.695 --> 00:02:26.682
+Turn it off, and the treatment leaves, with no reload.
+
+36
+00:02:27.116 --> 00:02:29.071
+A second site keeps its own setting.
+
+37
+00:02:29.877 --> 00:02:33.553
+The shortcut, Alt Shift B, switches the site you are on.
+
+38
+00:02:38.503 --> 00:02:40.248
+The other switch means everywhere.
+
+39
+00:02:40.558 --> 00:02:43.161
+Turn it off, and both sites go plain at once.
+
+40
+00:02:43.843 --> 00:02:46.699
+Turn it back on, and the reader's preference returns.
+
+41
+00:02:48.249 --> 00:02:49.990
+Greek is treated by default.
+
+42
+00:02:50.207 --> 00:02:53.727
+Japanese is not, because half a word can be half a sentence.
+
+43
+00:02:54.843 --> 00:03:00.126
+Some scripts are off by default, because prefix emphasis may not suit how they are written.
+
+44
+00:03:00.436 --> 00:03:03.613
+You can turn each one on in settings, if it works for you.
+
+45
+00:03:05.473 --> 00:03:06.471
+No account.
+
+46
+00:03:06.707 --> 00:03:07.805
+No analytics.
+
+47
+00:03:08.041 --> 00:03:09.752
+Your preferences stay with Chrome.
+
+48
+00:03:11.426 --> 00:03:17.876
+BeBold makes no network requests of its own, and page text is read only in memory, in your browser.
+
+49
+00:03:18.248 --> 00:03:24.163
+If you are signed in, Chrome can sync your preferences across your devices, the way it syncs bookmarks.
+
+50
+00:03:26.395 --> 00:03:29.758
+Earlier versions rebuilt page text to apply emphasis.
+
+51
+00:03:30.099 --> 00:03:33.534
+Version 2.0 applies it without rewriting the page.
+
+52
+00:03:34.154 --> 00:03:42.511
+In the repository's August 2026 test run, thirty-seven sites showed no detected layout or accessibility changes.
+
+53
+00:03:43.193 --> 00:03:46.709
+That is one measured run, not a promise about every page.
+
+54
+00:03:49.189 --> 00:03:50.412
+The same paragraph.
+
+55
+00:03:50.722 --> 00:03:52.567
+Off, and on, whenever you like.
+
+56
+00:03:54.152 --> 00:03:55.246
+A small anchor.
+
+57
+00:03:55.506 --> 00:03:56.627
+Your way to read.
+
+58
+00:03:57.185 --> 00:03:58.553
+Keep it if it helps you.
+
+59
+00:03:59.049 --> 00:04:01.019
+BeBold is available for Chrome.

@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f5f0" />
+    <meta
+      name="description"
+      content="A little emphasis. A little more clarity. Meet BeBold, the Chrome extension that gives your eyes an anchor—and preview a calmer way to save your ideas."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="BeBold — Find your focus. Keep your spark."
+    />
+    <meta
+      property="og:description"
+      content="A small anchor. Your way to read. Discover BeBold for Chrome and a new home for the ideas you want to keep."
+    />
+    <meta property="og:image" content="./media/social-card.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>BeBold — Find your focus. Keep your spark.</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="./fonts/manrope-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="./fonts/serif-italic.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" type="module"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <svg
+      class="icon-definitions"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <defs>
+        <symbol id="i-arrow" viewBox="0 0 24 24">
+          <path d="M5 19 19 5M5 5h14v14" />
+        </symbol>
+        <symbol id="i-down" viewBox="0 0 24 24">
+          <path d="M12 3v18M4 13l8 8 8-8" />
+        </symbol>
+        <symbol id="i-play" viewBox="0 0 24 24">
+          <path d="m8 4 12 8-12 8Z" stroke-linejoin="round" />
+        </symbol>
+        <symbol id="i-bookmark" viewBox="0 0 24 24">
+          <path d="M6 4h12v17l-6-4-6 4Z" stroke-linejoin="round" />
+        </symbol>
+        <symbol id="i-spark" viewBox="0 0 24 24">
+          <path
+            d="m12 2 2.7 7.3L22 12l-7.3 2.7L12 22l-2.7-7.3L2 12l7.3-2.7ZM20 2v4m-2-2h4"
+            stroke-linejoin="round"
+          />
+        </symbol>
+        <symbol id="i-comment" viewBox="0 0 24 24">
+          <path
+            d="M21 11.5a9 9 0 0 1-9 9 9.3 9.3 0 0 1-4-.9l-5 1.4 1.4-5a9.3 9.3 0 0 1-.9-4 9 9 0 0 1 17.5-.5Z"
+          />
+        </symbol>
+        <symbol id="i-check" viewBox="0 0 24 24">
+          <path d="m5 12 4 4L19 6" />
+        </symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24">
+          <path d="M12 5v14M5 12h14" />
+        </symbol>
+      </defs>
+    </svg>
+
+    <header class="header wrap">
+      <a class="wordmark" href="./" aria-label="BeBold home"
+        >bebold<span>.</span></a
+      >
+      <nav class="navigation" aria-label="Main navigation">
+        <a href="#experience">The experience</a>
+        <a href="#save-for-later"
+          >Save for later <span class="nav-dot" aria-label="coming soon"></span
+        ></a>
+      </nav>
+      <a
+        class="button button-outline nav-cta"
+        href="https://chromewebstore.google.com/detail/bebold/ckgjflmajkijpaipoijlpleihipnpjma?pli=1&amp;utm_source=bebold&amp;utm_medium=website&amp;utm_campaign=bebold_launch&amp;utm_content=header"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Get BeBold
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg
+      ></a>
+    </header>
+
+    <main id="main">
+      <section class="hero wrap" aria-labelledby="hero-heading">
+        <div class="hero-layout">
+          <div class="hero-copy">
+            <h1 id="hero-heading">
+              Find your focus.<br />Keep your<br /><em>spark.</em>
+            </h1>
+            <p class="hero-description">
+              A little emphasis. A lot more possibility.<br />Make the web
+              easier to read—and the good ideas easier to keep.
+            </p>
+            <div class="hero-actions">
+              <a
+                class="button button-coral"
+                href="https://chromewebstore.google.com/detail/bebold/ckgjflmajkijpaipoijlpleihipnpjma?pli=1&amp;utm_source=bebold&amp;utm_medium=website&amp;utm_campaign=bebold_launch&amp;utm_content=hero"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Get BeBold for Chrome
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-arrow" /></svg
+              ></a>
+              <a class="text-link watch-link" href="#experience"
+                ><span class="play-outline"
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-play" /></svg></span
+                >See it in action</a
+              >
+            </div>
+            <p class="hero-footnote">Free to use. Yours to make your own.</p>
+          </div>
+
+          <div class="reading-scene" id="reading-scene">
+            <div class="reading-backdrop" aria-hidden="true"></div>
+            <div class="reading-sheet">
+              <div class="sheet-kicker">A LITTLE CLARITY</div>
+              <p class="reading-sample" id="reading-sample">
+                <strong>Some</strong> ideas deserve your full attention. A small
+                change in the way you read can make room for everything that
+                comes next.
+              </p>
+              <div class="sheet-bottom">
+                <button
+                  class="reading-toggle"
+                  id="reading-toggle"
+                  type="button"
+                  role="switch"
+                  aria-checked="true"
+                  aria-label="Preview BeBold reading emphasis"
+                >
+                  <span class="toggle-track"><span></span></span
+                  ><span id="reading-state">BeBold on</span>
+                </button>
+                <span class="sheet-caption"
+                  >Your words.<br />A little clearer.</span
+                >
+              </div>
+            </div>
+            <div class="try-it-note" aria-hidden="true">
+              <span>Go on, give it a switch.</span
+              ><svg viewBox="0 0 52 32">
+                <path d="M2 28C20 30 42 25 44 4m-8 7 9-8 5 11" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="hero-bottom">
+          <p>A calmer corner of the <strong>internet.</strong></p>
+          <a href="#experience" aria-label="Scroll to the BeBold film"
+            ><svg class="icon" aria-hidden="true"><use href="#i-down" /></svg
+          ></a>
+        </div>
+      </section>
+
+      <section
+        class="film-section wrap"
+        id="experience"
+        aria-labelledby="film-heading"
+      >
+        <div class="section-heading">
+          <p class="eyebrow"><span>01 /</span> SEE IT FOR YOURSELF</p>
+          <h2 id="film-heading">
+            A small change.<br />A different <em>feeling.</em>
+          </h2>
+          <p class="section-aside">
+            Less effort finding your place.<br />More room for what you’re
+            reading.
+          </p>
+        </div>
+        <div class="film-stage" id="film-stage">
+          <video
+            id="brand-film"
+            controls
+            playsinline
+            preload="none"
+            poster="./media/film-poster.jpg"
+            aria-label="BeBold 2.0 product film"
+          >
+            <source src="./media/bebold-film.mp4" type="video/mp4" />
+            <track
+              src="./media/bebold-film.vtt"
+              kind="captions"
+              srclang="en"
+              label="English"
+            />
+            Your browser doesn’t support embedded video.
+            <a href="./media/bebold-film.mp4">Watch the BeBold film.</a>
+          </video>
+          <button
+            class="film-cover"
+            id="play-film"
+            type="button"
+            aria-label="Play the BeBold film, 4 minutes 5 seconds"
+            hidden
+          >
+            <span class="film-cover-top"
+              ><span>BE BOLD. READ YOUR WAY.</span
+              ><span>THE BEBOLD FILM / 4:05</span></span
+            >
+            <span class="film-title"
+              >A small anchor.<br /><em>Your way</em> to read.</span
+            >
+            <span class="film-play"
+              ><svg class="icon" aria-hidden="true"><use href="#i-play" /></svg
+              ><span>Watch the film</span></span
+            >
+            <span class="film-cover-bottom"
+              ><span>A little clarity changes the picture.</span
+              ><svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg
+            ></span>
+          </button>
+        </div>
+        <div class="film-caption">
+          <span>Meet BeBold 2.0. A closer look, in four minutes.</span
+          ><a
+            href="./media/bebold-film-transcript.txt"
+            target="_blank"
+            rel="noopener"
+            >Read the transcript <span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <div class="principles">
+          <div>
+            <span class="principle-number">01</span>
+            <h3>A place for your eyes to land.</h3>
+            <p>
+              Gentle emphasis at the start of each word gives your eyes an
+              anchor. Keep it if it helps you.
+            </p>
+          </div>
+          <div>
+            <span class="principle-number">02</span>
+            <h3>Your reading. Your rhythm.</h3>
+            <p>
+              Choose the treatment and strength that feel right. Switch it on or
+              off, site by site.
+            </p>
+          </div>
+          <div>
+            <span class="principle-number">03</span>
+            <h3>The page stays itself.</h3>
+            <p>
+              The same words, links, and layout. With the current extension,
+              your page text stays in your browser.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="save-section"
+        id="save-for-later"
+        aria-labelledby="save-heading"
+      >
+        <div class="save-layout wrap">
+          <div class="save-copy">
+            <p class="eyebrow">
+              <span class="coming-dot"></span> COMING NEXT / SAVE FOR LATER
+            </p>
+            <h2 id="save-heading">
+              For the ideas<br />you’re not ready<br />to <em>let go.</em>
+            </h2>
+            <p class="save-intro">
+              A place for what catches your eye.<br />Save it now. Connect the
+              dots later.
+            </p>
+            <p class="save-description">
+              The article. The image. That half-formed idea. We’re building a
+              calmer place to come back to them—with your own notes and AI to
+              help connect them to your work, your projects, and your life.
+            </p>
+            <div class="save-points">
+              <p>
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-bookmark" /></svg
+                >Keep the things that spark something.
+              </p>
+              <p>
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-comment" /></svg
+                >Leave a thought for your future self.
+              </p>
+              <p>
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-spark" /></svg
+                >Find a connection you hadn’t seen.
+              </p>
+            </div>
+            <p class="prototype-explanation">
+              Made with wandering minds in mind.<br />A preview of what’s next,
+              not a live AI service.
+            </p>
+          </div>
+
+          <div class="prototype-area">
+            <div class="prototype-label">
+              <span class="prototype-dot"></span> A LITTLE LOOK AHEAD
+              <span>Interactive prototype</span>
+            </div>
+            <div class="collection-window">
+              <div class="window-chrome" aria-hidden="true">
+                <span class="window-dots"><i></i><i></i><i></i></span
+                ><span class="window-address"
+                  >your little corner of the internet</span
+                ><span class="chrome-mark">✧</span>
+              </div>
+              <div class="collection-app">
+                <aside
+                  class="collection-sidebar"
+                  aria-label="Prototype navigation"
+                >
+                  <span class="mini-wordmark">b<span>.</span></span>
+                  <span class="sidebar-label">YOUR SPACE</span>
+                  <span class="sidebar-active"
+                    ><svg class="icon" aria-hidden="true">
+                      <use href="#i-bookmark" /></svg
+                    ><span>Saved ideas</span
+                    ><span id="saved-count">3</span></span
+                  >
+                  <a href="#connection-panel" class="sidebar-connection"
+                    ><svg class="icon" aria-hidden="true">
+                      <use href="#i-spark" /></svg
+                    ><span>Connections</span></a
+                  >
+                  <div class="sidebar-bottom">
+                    <span class="profile-avatar">Y</span
+                    ><span
+                      >A space for you<small
+                        >And all your possibilities.</small
+                      ></span
+                    >
+                  </div>
+                </aside>
+                <div class="collection-main">
+                  <div class="collection-title">
+                    <div>
+                      <p>LESS LOST. MORE FOUND.</p>
+                      <h3>Your collection<span>.</span></h3>
+                    </div>
+                    <svg class="icon" aria-hidden="true">
+                      <use href="#i-spark" />
+                    </svg>
+                  </div>
+                  <div
+                    class="collection-tabs"
+                    role="group"
+                    aria-label="Filter saved ideas"
+                  >
+                    <button
+                      type="button"
+                      class="active"
+                      data-filter="all"
+                      aria-pressed="true"
+                    >
+                      All ideas <span>3</span></button
+                    ><button
+                      type="button"
+                      data-filter="work"
+                      aria-pressed="false"
+                    >
+                      Work</button
+                    ><button
+                      type="button"
+                      data-filter="life"
+                      aria-pressed="false"
+                    >
+                      Life
+                    </button>
+                  </div>
+                  <div
+                    class="collection-scroll"
+                    tabindex="0"
+                    role="region"
+                    aria-label="Sample saved ideas, scroll to explore"
+                  >
+                    <article
+                      class="idea-card"
+                      data-item="architecture"
+                      data-category="work"
+                    >
+                      <div class="idea-source">
+                        <span
+                          ><i class="source-dot architecture-dot"></i
+                          >Architecture & inspiration</span
+                        ><button
+                          class="bookmark-button is-saved"
+                          type="button"
+                          aria-label="Unsave A softer kind of structure"
+                          aria-pressed="true"
+                        >
+                          <svg class="icon" aria-hidden="true">
+                            <use href="#i-bookmark" />
+                          </svg>
+                        </button>
+                      </div>
+                      <img
+                        class="idea-image"
+                        src="./media/architecture.webp"
+                        alt="Sunlight passing through a warm plaster archway"
+                        width="960"
+                        height="720"
+                        loading="lazy"
+                      />
+                      <div class="idea-body">
+                        <div class="idea-meta">
+                          A VISUAL NOTE <span>FOR YOUR NEXT PROJECT</span>
+                        </div>
+                        <h4>A softer kind of structure.</h4>
+                        <p>
+                          What if the next project had a little more breathing
+                          room?
+                        </p>
+                        <div class="idea-note">
+                          <span class="note-avatar">Y</span>
+                          <p>Love this balance of warmth and simplicity.</p>
+                        </div>
+                        <div class="user-notes" aria-live="polite"></div>
+                        <form class="comment-form">
+                          <label class="sr-only" for="note-architecture"
+                            >Add a note to A softer kind of structure</label
+                          ><input
+                            id="note-architecture"
+                            name="note"
+                            placeholder="A thought for later…"
+                            maxlength="280"
+                            autocomplete="off"
+                          /><button type="submit" aria-label="Add your note">
+                            <svg class="icon" aria-hidden="true">
+                              <use href="#i-plus" />
+                            </svg>
+                          </button>
+                        </form>
+                        <button
+                          class="connect-idea"
+                          data-connect="architecture"
+                          type="button"
+                        >
+                          <svg class="icon" aria-hidden="true">
+                            <use href="#i-spark" /></svg
+                          >Find a connection<span aria-hidden="true">↗</span>
+                        </button>
+                      </div>
+                    </article>
+                    <article
+                      class="idea-card"
+                      data-item="studio"
+                      data-category="life"
+                    >
+                      <div class="idea-source">
+                        <span
+                          ><i class="source-dot studio-dot"></i>Everyday
+                          inspiration</span
+                        ><button
+                          class="bookmark-button is-saved"
+                          type="button"
+                          aria-label="Unsave Make room for a little wild"
+                          aria-pressed="true"
+                        >
+                          <svg class="icon" aria-hidden="true">
+                            <use href="#i-bookmark" />
+                          </svg>
+                        </button>
+                      </div>
+                      <img
+                        class="idea-image"
+                        src="./media/studio.webp"
+                        alt="Olive branches in a ceramic vase with afternoon sunlight and an open notebook"
+                        width="960"
+                        height="720"
+                        loading="lazy"
+                      />
+                      <div class="idea-body">
+                        <div class="idea-meta">
+                          A SMALL REMINDER <span>FOR EVERYDAY LIFE</span>
+                        </div>
+                        <h4>Make room for a little wild.</h4>
+                        <p>
+                          A slower morning. An open notebook. Something growing.
+                        </p>
+                        <div class="user-notes" aria-live="polite"></div>
+                        <form class="comment-form">
+                          <label class="sr-only" for="note-studio"
+                            >Add a note to Make room for a little wild</label
+                          ><input
+                            id="note-studio"
+                            name="note"
+                            placeholder="A thought for later…"
+                            maxlength="280"
+                            autocomplete="off"
+                          /><button type="submit" aria-label="Add your note">
+                            <svg class="icon" aria-hidden="true">
+                              <use href="#i-plus" />
+                            </svg>
+                          </button>
+                        </form>
+                        <button
+                          class="connect-idea"
+                          data-connect="studio"
+                          type="button"
+                        >
+                          <svg class="icon" aria-hidden="true">
+                            <use href="#i-spark" /></svg
+                          >Find a connection<span aria-hidden="true">↗</span>
+                        </button>
+                      </div>
+                    </article>
+                    <article
+                      class="idea-card text-idea"
+                      data-item="attention"
+                      data-category="work"
+                    >
+                      <div class="idea-source">
+                        <span
+                          ><i class="source-dot attention-dot"></i>A thought
+                          worth keeping</span
+                        ><button
+                          class="bookmark-button is-saved"
+                          type="button"
+                          aria-label="Unsave Attention is a beginning"
+                          aria-pressed="true"
+                        >
+                          <svg class="icon" aria-hidden="true">
+                            <use href="#i-bookmark" />
+                          </svg>
+                        </button>
+                      </div>
+                      <blockquote>
+                        “Pay attention.<br />There is something here.”
+                      </blockquote>
+                      <div class="idea-body">
+                        <h4>Attention is a beginning.</h4>
+                        <p>
+                          An original BeBold thought for your next blank page.
+                        </p>
+                        <div class="user-notes" aria-live="polite"></div>
+                        <form class="comment-form">
+                          <label class="sr-only" for="note-attention"
+                            >Add a note to Attention is a beginning</label
+                          ><input
+                            id="note-attention"
+                            name="note"
+                            placeholder="A thought for later…"
+                            maxlength="280"
+                            autocomplete="off"
+                          /><button type="submit" aria-label="Add your note">
+                            <svg class="icon" aria-hidden="true">
+                              <use href="#i-plus" />
+                            </svg>
+                          </button>
+                        </form>
+                        <button
+                          class="connect-idea"
+                          data-connect="attention"
+                          type="button"
+                        >
+                          <svg class="icon" aria-hidden="true">
+                            <use href="#i-spark" /></svg
+                          >Find a connection<span aria-hidden="true">↗</span>
+                        </button>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="connection-panel" id="connection-panel" tabindex="-1">
+              <div class="connection-heading">
+                <span
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-spark" /></svg
+                  >CONNECT THE DOTS</span
+                ><span class="example-label">Illustrative AI preview</span>
+              </div>
+              <label for="connection-context"
+                >Bring this idea into
+                <select id="connection-context">
+                  <option value="work">my work</option>
+                  <option value="project">a personal project</option>
+                  <option value="life">everyday life</option>
+                </select></label
+              >
+              <p id="connection-result" aria-live="polite">
+                That archway you saved could inspire a softer visual direction
+                for your next project. Start with warm neutrals, simple shapes,
+                and a little more space.
+              </p>
+              <div class="connection-source">
+                <span class="connection-source-dot"></span
+                ><span id="connection-source"
+                  >Connected to “A softer kind of structure.”</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing" aria-labelledby="closing-heading">
+        <div class="wrap">
+          <p>A LITTLE MORE YOU. A LITTLE LESS FRICTION.</p>
+          <h2 id="closing-heading">Make room for<br /><em>possibility.</em></h2>
+          <div class="closing-actions">
+            <a
+              class="button button-dark"
+              href="https://chromewebstore.google.com/detail/bebold/ckgjflmajkijpaipoijlpleihipnpjma?pli=1&amp;utm_source=bebold&amp;utm_medium=website&amp;utm_campaign=bebold_launch&amp;utm_content=footer"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Find your focus with BeBold
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-arrow" /></svg></a
+            ><span>Free for Chrome. Keep it if it helps.</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer wrap">
+      <div>
+        <a class="wordmark" href="./" aria-label="BeBold home"
+          >bebold<span>.</span></a
+        >
+        <p>A small anchor. Your way to read.</p>
+      </div>
+      <div class="footer-links">
+        <a
+          href="https://github.com/cdukedev/BeBold"
+          target="_blank"
+          rel="noopener noreferrer"
+          >GitHub <span aria-hidden="true">↗</span></a
+        ><a href="./PRIVACY.html">Privacy</a
+        ><span>Made for minds that wander.</span>
+      </div>
+    </footer>
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  </body>
+</html>

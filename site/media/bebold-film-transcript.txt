@@ -1,0 +1,37 @@
+BeBold 2.0, film transcript
+
+One paragraph
+
+A small anchor. Your way to read. Here is a paragraph, just as the page wrote it. Open BeBold, and turn it on. The start of each word gains a little weight, and nothing moves. Some people find that easier to hold their place. Others find it distracting. It is a reading preference, so keep it only if it helps you. The count describes this page, not how you read it.
+
+A treatment that fits
+
+In settings, a live preview shows each choice as you make it. Bold adds weight. Underline marks it with a line. Background tint sets a faint wash behind it. Choose the treatment that works for you. Strength has five settings, from subtle to maximum. And you decide how much of each word gets the anchor: shorter, default, or longer. This reader keeps bold, at strength four.
+
+The page stays itself
+
+Real pages are more than paragraphs. Headings, lists, links, and columns receive the same anchor. Off or on, every element in this recording stays in the same place. That is because BeBold paints an overlay of emphasis. The original text stays intact. Select a sentence, and it selects like any other. Copy it into a plain text note, and the words arrive whole. Search the page, and the full word is still found.
+
+Left alone, on purpose
+
+Some text should stay exactly as written. Ordinary sentences get the anchor. A code snippet does not. Neither does a dosage, a version number, or an account identifier. Anything you can type into stays plain as well. These rules are careful, but they are not a guarantee. And when a page shows a password field, BeBold leaves the whole page alone. Some pages are left alone on purpose.
+
+Your choice, site by site
+
+Back on the article, this switch controls one site. Turn it off, and the treatment leaves, with no reload. A second site keeps its own setting. The shortcut, Alt Shift B, switches the site you are on. The other switch means everywhere. Turn it off, and both sites go plain at once. Turn it back on, and the reader's preference returns.
+
+Writing systems deserve care
+
+Greek is treated by default. Japanese is not, because half a word can be half a sentence. Some scripts are off by default, because prefix emphasis may not suit how they are written. You can turn each one on in settings, if it works for you.
+
+Private by design
+
+No account. No analytics. Your preferences stay with Chrome. BeBold makes no network requests of its own, and page text is read only in memory, in your browser. If you are signed in, Chrome can sync your preferences across your devices, the way it syncs bookmarks.
+
+What changed in 2.0
+
+Earlier versions rebuilt page text to apply emphasis. Version 2.0 applies it without rewriting the page. In the repository's August 2026 test run, thirty-seven sites showed no detected layout or accessibility changes. That is one measured run, not a promise about every page.
+
+A small anchor
+
+The same paragraph. Off, and on, whenever you like. A small anchor. Your way to read. Keep it if it helps you. BeBold is available for Chrome.
