@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="How the BeBold reading extension and this website handle your information."
+    />
+    <meta name="theme-color" content="#f7f5f0" />
+    <title>Privacy — BeBold</title>
+    <style>
+      @font-face {
+        font-family: Manrope;
+        src: url("fonts/manrope-latin.woff2") format("woff2");
+        font-style: normal;
+        font-weight: 200 800;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: BeBold Serif;
+        src: url("fonts/serif-roman.woff2") format("woff2");
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+      }
+      :root {
+        color-scheme: light;
+        --paper: #f7f5f0;
+        --ink: #20201d;
+        --accent: #ed4f36;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: Manrope, sans-serif;
+        font-size: 15px;
+        line-height: 1.8;
+        -webkit-font-smoothing: antialiased;
+      }
+      header,
+      main,
+      footer {
+        width: min(720px, calc(100% - 48px));
+        margin-inline: auto;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding-block: 30px;
+        border-bottom: 1px solid #20201d24;
+      }
+      a {
+        color: inherit;
+        text-decoration-color: var(--accent);
+        text-underline-offset: 4px;
+        overflow-wrap: anywhere;
+      }
+      a:hover {
+        color: var(--accent);
+      }
+      a:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 5px;
+        border-radius: 2px;
+      }
+      .wordmark {
+        font-size: 25px;
+        font-weight: 800;
+        letter-spacing: -1.5px;
+        text-decoration: none;
+      }
+      .back {
+        font-size: 12px;
+        font-weight: 600;
+      }
+      main {
+        padding-block: 64px 60px;
+      }
+      .eyebrow {
+        margin: 0 0 12px;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      h1 {
+        margin: 0 0 16px;
+        font-family:
+          BeBold Serif,
+          Georgia,
+          serif;
+        font-size: clamp(48px, 9vw, 76px);
+        font-weight: 400;
+        line-height: 1.06;
+        letter-spacing: -0.045em;
+      }
+      .meta {
+        margin: 0;
+        color: #69675f;
+        font-size: 12px;
+      }
+      .scope {
+        margin: 30px 0 48px;
+        padding-left: 20px;
+        border-left: 2px solid var(--accent);
+        font-size: 14px;
+      }
+      section {
+        margin-top: 34px;
+      }
+      h2 {
+        margin: 0 0 10px;
+        font-size: 19px;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.4;
+      }
+      p {
+        margin: 0 0 16px;
+      }
+      ul {
+        margin: 0 0 18px;
+        padding-left: 22px;
+      }
+      li {
+        margin-bottom: 5px;
+      }
+      code {
+        padding: 2px 4px;
+        border-radius: 3px;
+        background: #20201d08;
+        font-size: 0.9em;
+        overflow-wrap: anywhere;
+      }
+      .website {
+        margin-top: 48px;
+        padding-top: 30px;
+        border-top: 1px solid #20201d24;
+      }
+      footer {
+        padding-block: 24px 40px;
+        border-top: 1px solid #20201d24;
+        font-size: 12px;
+      }
+      @media (max-width: 480px) {
+        main {
+          padding-top: 44px;
+        }
+        header {
+          padding-block: 22px;
+        }
+        body {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a class="wordmark" href="./" aria-label="BeBold home">bebold.</a>
+      <a class="back" href="./">← Back to BeBold</a>
+    </header>
+    <main>
+      <p class="eyebrow">Your reading. Your business.</p>
+      <h1>Privacy, plainly.</h1>
+      <p class="meta">
+        BeBold privacy policy · Last updated: 26 September 2026.
+      </p>
+      <p class="scope">
+        The extension policy below applies to the current BeBold reading
+        extension, version 2.0 and later. The Save for later concept shown on
+        this website is an upcoming feature preview, not part of the current
+        extension.
+      </p>
+
+      <section aria-labelledby="short-version">
+        <h2 id="short-version">The short version</h2>
+        <p>
+          BeBold makes no network requests of any kind. It collects nothing,
+          sends nothing, and stores only your own settings in Chrome's built-in
+          sync storage.
+        </p>
+      </section>
+
+      <section aria-labelledby="page-text">
+        <h2 id="page-text">What BeBold does with the pages you visit</h2>
+        <p>
+          BeBold reads the text of the pages you open so it can decide which
+          words to emphasise. That reading happens entirely inside your browser,
+          in memory, while the page is open. The text is never copied, saved,
+          logged, or transmitted anywhere. When you close the tab, it is gone.
+        </p>
+        <p>
+          The extension needs access to all websites for the same reason a spell
+          checker does: it cannot know in advance which page you will want to
+          read.
+        </p>
+      </section>
+
+      <section aria-labelledby="stored-settings">
+        <h2 id="stored-settings">What BeBold stores</h2>
+        <p>Only your settings:</p>
+        <ul>
+          <li>whether the extension is on</li>
+          <li>
+            which treatment you chose, its strength, and how much of each word
+            to emphasise
+          </li>
+          <li>which writing systems you have opted into</li>
+          <li>the list of individual sites you have turned it off on</li>
+        </ul>
+        <p>
+          These live in <code>chrome.storage.sync</code>, which is Chrome's own
+          storage. If you are signed in to Chrome, Chrome syncs them across your
+          devices, the same way it syncs your bookmarks. That transfer is
+          between you and Google. BeBold has no server and receives none of it.
+        </p>
+        <p>Uninstalling the extension removes this data.</p>
+      </section>
+
+      <section aria-labelledby="does-not-do">
+        <h2 id="does-not-do">What BeBold does not do</h2>
+        <ul>
+          <li>
+            No analytics, telemetry, crash reporting, or usage statistics.
+          </li>
+          <li>No accounts, logins, identifiers, or cookies.</li>
+          <li>
+            No advertising, and no data sold, shared, or transferred to anyone.
+          </li>
+          <li>
+            No remote configuration, and no code loaded from anywhere at
+            runtime.
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="untouched-pages">
+        <h2 id="untouched-pages">Pages BeBold deliberately refuses to touch</h2>
+        <p>
+          BeBold turns itself off completely on any page showing a visible
+          password field or a credit card entry field, and on any site that opts
+          out with <code>&lt;meta name="bebold" content="off"&gt;</code>. It
+          also never alters code, dosages, account numbers, version strings,
+          links, or editable text anywhere.
+        </p>
+      </section>
+
+      <section aria-labelledby="verify-yourself">
+        <h2 id="verify-yourself">How you can check this yourself</h2>
+        <p>
+          The extension is open source at
+          <a href="https://github.com/cdukedev/BeBold"
+            >github.com/cdukedev/BeBold</a
+          >
+          and it is a handful of plain JavaScript files with no build step and
+          no bundler, so what is published is what you can read.
+        </p>
+        <p>
+          The claim is also enforced automatically rather than merely asserted:
+          continuous integration fails the build if any source file so much as
+          mentions <code>fetch</code>, <code>XMLHttpRequest</code>,
+          <code>navigator.sendBeacon</code>, <code>WebSocket</code>, or
+          <code>EventSource</code>. See <code>.github/workflows/qa.yml</code>.
+        </p>
+      </section>
+
+      <section aria-labelledby="store-disclosures">
+        <h2 id="store-disclosures">Chrome Web Store data disclosures</h2>
+        <p>For the store's data handling form, the answers are:</p>
+        <ul>
+          <li>
+            Personally identifiable information: <strong>not collected</strong>
+          </li>
+          <li>Health information: <strong>not collected</strong></li>
+          <li>
+            Financial and payment information: <strong>not collected</strong>
+          </li>
+          <li>Authentication information: <strong>not collected</strong></li>
+          <li>Personal communications: <strong>not collected</strong></li>
+          <li>Location: <strong>not collected</strong></li>
+          <li>Web history: <strong>not collected</strong></li>
+          <li>User activity: <strong>not collected</strong></li>
+          <li>Website content: <strong>not collected</strong></li>
+        </ul>
+        <p>And the three certifications:</p>
+        <ul>
+          <li>
+            I do not sell or transfer user data to third parties, outside of the
+            approved use cases.
+          </li>
+          <li>
+            I do not use or transfer user data for purposes that are unrelated
+            to my item's single purpose.
+          </li>
+          <li>
+            I do not use or transfer user data to determine creditworthiness or
+            for lending purposes.
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="contact">
+        <h2 id="contact">Contact</h2>
+        <p>
+          Open an issue at
+          <a href="https://github.com/cdukedev/BeBold/issues"
+            >github.com/cdukedev/BeBold/issues</a
+          >.
+        </p>
+      </section>
+
+      <section class="website" aria-labelledby="this-website">
+        <h2 id="this-website">This website</h2>
+        <p>
+          This website uses no analytics. The Save for later demo stores only
+          your preview interactions in your browser's local storage; it does not
+          save pages from your browsing or send that preview data anywhere.
+          Links to the Chrome Web Store and GitHub take you to separate services
+          governed by their own privacy policies. The upcoming Save for later
+          feature will have its own privacy information when it becomes
+          available.
+        </p>
+      </section>
+    </main>
+    <footer><a href="./">← Back to BeBold</a></footer>
+  </body>
+</html>

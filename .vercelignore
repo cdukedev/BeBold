@@ -1,0 +1,10 @@
+# Upload only the static site's source and dependency-free build inputs.
+/*
+!/site/
+!/tools/
+/tools/*
+!/tools/build-site.mjs
+!/package.json
+!/package-lock.json
+!/vercel.json
+!/.vercelignore
